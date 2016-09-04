@@ -1,0 +1,5 @@
+org\sapia\tad\impl\DefaultColumnTest.class
+org\sapia\tad\transform\pivot\PivotsTest.class
+org\sapia\tad\value\DoubleValueTest.class
+org\sapia\tad\util\SettingsTest.class
+org\sapia\tad\value\MutableValueTest.class
