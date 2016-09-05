@@ -42,7 +42,7 @@ Thumbs.db
 #################
 .classpath
 .project
-.idea
+.idea/
 *.iml
 pom.xml.versionsBackup
 .settings/
