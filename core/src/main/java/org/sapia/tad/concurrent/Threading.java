@@ -42,4 +42,11 @@ public class Threading {
   public static Time getTimeout() {
     return DEFAULT_ASYNC_TIMEOUT;
   }
+
+  /**
+   * @return a new {@link TaskExecutor}.
+   */
+  public static TaskExecutor getTaskExecutor() {
+    return new TaskExecutor(EXECUTOR);
+  }
 }

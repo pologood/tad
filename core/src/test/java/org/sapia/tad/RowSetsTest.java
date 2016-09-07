@@ -1,11 +1,11 @@
 package org.sapia.tad;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.value.Value;
 import org.sapia.tad.value.Values;
+
+import static org.junit.Assert.assertEquals;
 
 public class RowSetsTest {
   

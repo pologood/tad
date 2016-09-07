@@ -1,11 +1,12 @@
 package org.sapia.tad.impl;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Column;
 import org.sapia.tad.Datatype;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 public class DefaultColumnTest {
   

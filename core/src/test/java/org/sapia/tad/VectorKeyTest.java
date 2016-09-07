@@ -1,12 +1,13 @@
 package org.sapia.tad;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.Values;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class VectorKeyTest {
   

@@ -1,4 +1,4 @@
-package org.sapia.tad.algo;
+package org.sapia.tad.util;
 
 import java.util.Comparator;
 

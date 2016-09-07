@@ -1,9 +1,9 @@
 package org.sapia.tad.value;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 import org.sapia.tad.util.Numbers;
+
+import static org.junit.Assert.assertEquals;
 
 public class ValuesTest {
 

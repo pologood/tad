@@ -73,6 +73,11 @@ public class DefaultVector implements Vector {
   }
 
   @Override
+  public double norm() {
+    return Vectors.norm(this);
+  }
+
+  @Override
   public int size() {
     return values.length;
   }

@@ -44,6 +44,11 @@ public interface Vector extends Iterable<Value> {
   public double product(Vector other);
 
   /**
+   * @return the norm of this vector.
+   */
+  public double norm();
+
+  /**
    * Performs the sum of this instance and a given vector. This method will treat non-numeric values as 0.
    *
    * @param other another {@link Vector}

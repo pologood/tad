@@ -1,9 +1,5 @@
 package org.sapia.tad.impl;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Vector;
@@ -11,6 +7,10 @@ import org.sapia.tad.util.Data;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
 import org.sapia.tad.value.Values;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class DefaultVectorTest {
 

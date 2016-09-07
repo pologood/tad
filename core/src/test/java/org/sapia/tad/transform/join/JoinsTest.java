@@ -2,11 +2,7 @@ package org.sapia.tad.transform.join;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.sapia.tad.ColumnSets;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datasets;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.Vectors;
+import org.sapia.tad.*;
 import org.sapia.tad.util.Data;
 
 public class JoinsTest {

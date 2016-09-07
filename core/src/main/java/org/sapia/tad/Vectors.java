@@ -99,4 +99,19 @@ public class Vectors {
     return new DefaultVector(sum);
   }
 
+  /**
+   * @param v a {@link Vector} whose norm is to be computed.
+   * @return the norm of the given vector.
+   */
+  public static double norm(Vector v) {
+    double total = 0;
+    for (int i = 0; i < v.size(); i++) {
+      Value val = v.get(i);
+      if (val.isNumeric()) {
+        total += Math.pow(val.get(), 2);
+      }
+    }
+    return Math.sqrt(total);
+  }
+
 }

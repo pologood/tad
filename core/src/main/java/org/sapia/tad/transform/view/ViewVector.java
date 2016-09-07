@@ -83,6 +83,11 @@ class ViewVector implements Vector {
   }
 
   @Override
+  public double norm() {
+    return Vectors.norm(this);
+  }
+
+  @Override
   public Value[] toArray() {
     Value[] values = new Value[columnIndices.length];
     for (int i = 0; i < columnIndices.length; i++) {

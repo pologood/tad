@@ -1,12 +1,12 @@
 package org.sapia.tad.transform.view;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Column;
 import org.sapia.tad.Datatype;
 import org.sapia.tad.impl.DefaultColumn;
+
+import static org.junit.Assert.assertEquals;
 
 public class ViewColumnTest {
   

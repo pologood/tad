@@ -1,15 +1,15 @@
 package org.sapia.tad.io.csv;
 
-import static org.junit.Assert.*;
-
-import java.io.IOException;
-import java.io.StringReader;
-
 import org.junit.Test;
 import org.sapia.tad.ColumnSet;
 import org.sapia.tad.ColumnSets;
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Datatype;
+
+import java.io.IOException;
+import java.io.StringReader;
+
+import static org.junit.Assert.assertEquals;
 
 public class CsvReaderTest {
   

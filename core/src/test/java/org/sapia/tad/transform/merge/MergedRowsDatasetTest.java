@@ -1,23 +1,19 @@
 package org.sapia.tad.transform.merge;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.sapia.tad.Column;
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Datatype;
 import org.sapia.tad.IndexedDataset;
-import org.sapia.tad.RowResult;
 import org.sapia.tad.Vector;
-import org.sapia.tad.algo.Criteria;
 import org.sapia.tad.impl.DefaultColumn;
 import org.sapia.tad.impl.DefaultDataset;
 import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Data;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.StringValue;
-import org.sapia.tad.value.Value;
+
+import static org.junit.Assert.assertEquals;
 
 public class MergedRowsDatasetTest {
   

@@ -10,6 +10,22 @@ public class Values {
   private Values() {
   }
 
+  /*public static Value[] array(double...doubleValues) {
+    Value[] values = new Value[doubleValues.length];
+    for (int i = 0; i < values.length; i++) {
+      values[i] = NumericValue.of(doubleValues[i]);
+    }
+    return values;
+  }
+
+  public static Value[] array(int...intValues) {
+    Value[] values = new Value[intValues.length];
+    for (int i = 0; i < values.length; i++) {
+      values[i] = NumericValue.of(intValues[i]);
+    }
+    return values;
+  }*/
+
   /**
    * @param objects some objects with which to create an array of {@link Value}s.
    * @return array of  {@link Value}s .

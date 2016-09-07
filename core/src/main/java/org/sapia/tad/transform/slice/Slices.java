@@ -4,6 +4,11 @@ import org.sapia.tad.Dataset;
 import org.sapia.tad.conf.Conf;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.util.Checks;
+import org.sapia.tad.util.Numbers;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Provides slicing operations.
@@ -100,7 +105,7 @@ public class Slices {
   
   /**
    * @param dataset the {@link Dataset} whose desired quintile slice should be returned.
-   * @param quintile (a number indicating which quintile is desired: 1, 2, 3, 4, or 5).
+   * @param quintileNumber (a number indicating which quintile is desired: 1, 2, 3, 4, or 5).
    * @return a new {@link Dataset}, corresponding to the desired quartile.
    */
   @Doc("Returns the slice corresponding to a given quartile")
@@ -118,12 +123,12 @@ public class Slices {
    */
   @Doc("Returns a proportion of the given dataset (given a number of parts into which the dataset should be subdivided)")
   public static Dataset partition(
-      @Doc("the dataset to slice") Dataset dataset, 
-      @Doc("the partition number (1 to <partition count>) - see next param") int partitionNumber, 
+      @Doc("the dataset to slice") Dataset dataset,
+      @Doc("the partition number (1 to <partition count>) - see next param") int partitionNumber,
       @Doc("the partition count: the number of portions to divide the dataset into") int partitionCount) {
     Checks.isTrue(
-        partitionNumber > 0 && partitionNumber <= partitionCount, 
-        "Expected between 1 and %s, got: %s", 
+        partitionNumber > 0 && partitionNumber <= partitionCount,
+        "Expected between 1 and %s, got: %s",
         partitionNumber, partitionCount);
     int portionLen = dataset.size() / partitionCount;
     int start      = (partitionNumber - 1) * portionLen;
@@ -132,6 +137,32 @@ public class Slices {
       end = dataset.size();
     } 
     return slice(dataset, start, end);
+  }
+
+  @Doc("Returns a collection of datasets, with each dataset corresponding to a partition of the dataset given as input")
+  public static List<Dataset> partitions(
+          @Doc("the dataset to slice") Dataset dataset,
+          @Doc("the partition count: the number of portions to divide the dataset into") int partitionCount
+  ) {
+    Checks.isTrue(
+            partitionCount > 0,
+            "Partition could must be greater than 0, got: %s", partitionCount);
+    if (dataset.size() < partitionCount) {
+      return Collections.singletonList(dataset);
+    }
+    int portionLen = dataset.size() / partitionCount;
+    List<Dataset> toReturn = new ArrayList<>(partitionCount);
+
+    for (int partitionNumber : Numbers.range(1, partitionCount + 1)) {
+      int start = (partitionNumber - 1) * portionLen;
+      int end   = start + portionLen;
+      if (partitionNumber == partitionCount) {
+        end = dataset.size();
+      }
+      toReturn.add(slice(dataset, start, end));
+    }
+
+    return toReturn;
   }
  
 }

@@ -88,6 +88,11 @@ class FormulaVector implements Vector {
   }
 
   @Override
+  public double norm() {
+    return Vectors.norm(this);
+  }
+
+  @Override
   public Value[] toArray() {
     Value[] values = new Value[size()];
     for (int i = 0; i < values.length; i++) {

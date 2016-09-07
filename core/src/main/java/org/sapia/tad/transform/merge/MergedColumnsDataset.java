@@ -6,7 +6,6 @@ import org.sapia.tad.algo.Criteria;
 import org.sapia.tad.impl.*;
 import org.sapia.tad.transform.slice.Slices;
 import org.sapia.tad.util.Checks;
-import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
 
 import java.util.*;
@@ -73,29 +72,18 @@ class MergedColumnsDataset implements Dataset {
 
     @Override
     public double product(Vector other) {
-      double product = 0;
-      for (int i = 0; i < size(); i++) {
-        Value thisValue = get(i);
-        Value otherValue = other.get(i);
-        if (thisValue.isNumeric() && otherValue.isNumeric()) {
-          product += thisValue.get() * otherValue.get();
-        }
-      }
-      return product;
+      return Vectors.product(this, other);
     }
 
     @Override
     public Vector sum(Vector other) {
-      Checks.isTrue(size() == other.size(), "Vectors do not have same length (%s vs %s)", size(), other.size());
-      Value[] sum = new Value[size()];
-      for (int i = 0; i < size(); i++) {
-        Value thisValue = get(i);
-        Value otherValue = other.get(i);
-        sum[i] = NumericValue.sum(thisValue, otherValue);
-      }
-      return new DefaultVector(sum);
+      return Vectors.sum(this, other);
     }
 
+    @Override
+    public double norm() {
+      return Vectors.norm(this);
+    }
 
     @Override
     public Value[] toArray() {

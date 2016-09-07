@@ -87,6 +87,11 @@ class JoinVector implements Vector {
   }
 
   @Override
+  public double norm() {
+    return Vectors.norm(this);
+  }
+
+  @Override
   public Value[] toArray() {
     Value[] values = new Value[totalSize];
     for (int i = 0; i < totalSize; i++) {

@@ -1,14 +1,8 @@
 package org.sapia.tad.transform.merge;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.sapia.tad.Column;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.IndexedDataset;
-import org.sapia.tad.Vector;
+import org.sapia.tad.*;
 import org.sapia.tad.impl.DefaultColumn;
 import org.sapia.tad.impl.DefaultDataset;
 import org.sapia.tad.impl.DefaultVector;
@@ -16,6 +10,8 @@ import org.sapia.tad.util.Data;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.StringValue;
 import org.sapia.tad.value.Values;
+
+import static org.junit.Assert.assertEquals;
 
 public class MergedColumnsDatasetTest {
 

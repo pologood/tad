@@ -1,17 +1,18 @@
 package org.sapia.tad.io.weka;
 
-import static org.junit.Assert.*;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.sapia.tad.ColumnSet;
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Vector;
 import org.sapia.tad.util.Checks;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class WekaDatasetAdapterTest {
   

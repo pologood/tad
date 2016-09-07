@@ -1,12 +1,12 @@
 package org.sapia.tad.computation;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.ColumnSets;
 import org.sapia.tad.Datatype;
 import org.sapia.tad.value.NumericValue;
+
+import static org.junit.Assert.assertEquals;
 
 public class ComputationResultsTest {
   

@@ -1,19 +1,8 @@
 package org.sapia.tad.transform.formula;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
-import org.sapia.tad.Column;
-import org.sapia.tad.ColumnSet;
-import org.sapia.tad.ColumnSets;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.IndexedDataset;
-import org.sapia.tad.Vector;
+import org.sapia.tad.*;
 import org.sapia.tad.func.ArgFunction;
 import org.sapia.tad.impl.DefaultColumn;
 import org.sapia.tad.impl.DefaultColumnSet;
@@ -22,6 +11,11 @@ import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Data;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.NumericValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class FormulaDatasetTest {
   

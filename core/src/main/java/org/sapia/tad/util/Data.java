@@ -5,7 +5,6 @@ import org.sapia.tad.func.ArgFunction;
 import org.sapia.tad.help.Doc;
 
 import java.util.*;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**

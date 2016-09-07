@@ -1,10 +1,10 @@
 package org.sapia.tad.util;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.util.Settings.Setting;
+
+import static org.junit.Assert.assertEquals;
 
 public class SettingsTest {
 

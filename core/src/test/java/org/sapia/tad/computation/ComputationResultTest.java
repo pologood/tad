@@ -1,10 +1,5 @@
 package org.sapia.tad.computation;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Column;
@@ -15,6 +10,11 @@ import org.sapia.tad.impl.DefaultColumnSet;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class ComputationResultTest {
   

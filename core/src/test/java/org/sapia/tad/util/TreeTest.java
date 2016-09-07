@@ -1,10 +1,11 @@
 package org.sapia.tad.util;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.util.Tree.Node;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class TreeTest {
 

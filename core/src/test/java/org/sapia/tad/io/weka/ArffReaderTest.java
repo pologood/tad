@@ -1,11 +1,11 @@
 package org.sapia.tad.io.weka;
 
+import org.junit.Test;
+import org.sapia.tad.util.Checks;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import org.junit.Test;
-import org.sapia.tad.util.Checks;
 
 public class ArffReaderTest {
   

@@ -1,20 +1,15 @@
 package org.sapia.tad.transform.range;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.sapia.tad.*;
+import org.sapia.tad.impl.DefaultDataset;
+import org.sapia.tad.stat.MeanValue;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.sapia.tad.ColumnSet;
-import org.sapia.tad.ColumnSets;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.Vector;
-import org.sapia.tad.Vectors;
-import org.sapia.tad.impl.DefaultDataset;
-import org.sapia.tad.stat.MeanValue;
+import static org.junit.Assert.assertEquals;
 
 public class RangesTest {
   

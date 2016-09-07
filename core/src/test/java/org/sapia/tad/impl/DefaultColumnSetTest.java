@@ -1,18 +1,16 @@
 package org.sapia.tad.impl;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Set;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Column;
 import org.sapia.tad.ColumnSet;
 import org.sapia.tad.Datatype;
 import org.sapia.tad.util.Data;
+
+import java.util.List;
+import java.util.Set;
+
+import static org.junit.Assert.*;
 
 public class DefaultColumnSetTest {
   

@@ -9,7 +9,7 @@ import org.sapia.tad.value.Values;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class VectorsTest {
 
@@ -82,5 +82,11 @@ public class VectorsTest {
     assertEquals(6, sum.get(1).get(), 0);
     assertEquals(8, sum.get(2).get(), 0);
     assertEquals(10, sum.get(3).get(), 0);
+  }
+
+  @Test
+  public void testNorm() {
+    double expected = Math.sqrt(Math.pow(1, 2) + Math.pow(2, 2) + Math.pow(3, 2));
+    assertEquals(expected, vector.norm(), 0);
   }
 }

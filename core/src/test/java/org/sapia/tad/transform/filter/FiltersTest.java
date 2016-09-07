@@ -1,14 +1,8 @@
 package org.sapia.tad.transform.filter;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.*;
-import org.sapia.tad.func.ArgFunction;
 import org.sapia.tad.impl.DefaultDataset;
 import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Data;
@@ -16,6 +10,12 @@ import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.NullValue;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.StringValue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FiltersTest {
   

@@ -1,25 +1,15 @@
 package org.sapia.tad.impl;
 
-import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.Test;
+import org.sapia.tad.*;
+import org.sapia.tad.util.Data;
+import org.sapia.tad.util.Numbers;
 
 import java.util.Set;
 
-
-
-
-import org.junit.Before;
-import org.junit.Test;
-import org.sapia.tad.Column;
-import org.sapia.tad.ColumnSet;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.Index;
-import org.sapia.tad.RowResult;
-import org.sapia.tad.RowSet;
-import org.sapia.tad.Vector;
-import org.sapia.tad.algo.Criteria;
-import org.sapia.tad.util.Data;
-import org.sapia.tad.util.Numbers;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class IndexDatasetAdapterTest {
   

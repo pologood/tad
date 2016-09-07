@@ -2,9 +2,9 @@ package org.sapia.tad.transform.sort;
 
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Vector;
-import org.sapia.tad.algo.ReverseComparator;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DefaultDataset;
+import org.sapia.tad.util.ReverseComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;

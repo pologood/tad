@@ -1,15 +1,14 @@
 package org.sapia.tad.transform.view;
 
-import static org.junit.Assert.*;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
-import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Numbers;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
+
+import static org.junit.Assert.assertEquals;
 
 public class ViewVectorTest {
   
