@@ -25,30 +25,30 @@ public class RowSets {
   /**
    * Performs an arithmetic sum over the rows of the given {@link RowSet}.
    * <p>
-   * Non-numeric array in the rowset's vectors are taken as zeroes.
+   * Non-numeric values in the rowset's vectors are taken as zeroes.
    * 
    * @param toSum a {@link RowSet} whose vectors should be summed.
    * @return the {@link Vector} resulting from the sum operation.
    */
-  @Doc("Performs the arithmetic sum of the vectors in the provided rowsets. Non-numeric array are converted to 0")
+  @Doc("Performs the arithmetic sum of the vectors in the provided rowsets. Non-numeric values are converted to 0")
   public static Vector sum(RowSet toSum) {
     return sum(0, toSum);
   }
   
   /**
    * Performs an arithmetic sum over the rows of the given {@link RowSet}, but only for vector
-   * array from the given index and up.
+   * values from the given index and up.
    * <p>
-   * Non-numeric array in the rowset's vectors are taken as zeroes.
+   * Non-numeric values in the rowset's vectors are taken as zeroes.
    * 
-   * @param startVectorIndex the start index from which to sum vector array (given a vector v1 and vector v2,
+   * @param startVectorIndex the start index from which to sum vector values (given a vector v1 and vector v2,
    * the sum will be done over v1[startIndex] + v2[startIndex], v1[startIndex + 1] + v2[startIndex + 1], and so
    * on). 
    * @param toSum a {@link RowSet} whose vectors should be summed.
    * @return the {@link Vector} resulting from the sum operation.
    */
-  @Doc("Performs the arithmetic sum of the vectors in the provided rowsets. Performs the sum for vector array at given index and beyond. " +
-       "Non-numeric array are converted to 0")
+  @Doc("Performs the arithmetic sum of the vectors in the provided rowsets. Performs the sum for vector values at given index and beyond. " +
+       "Non-numeric values are converted to 0")
   public static Vector sum(int startVectorIndex, RowSet toSum) {
     Value[] sums = null;
     for (Vector v : toSum) {
@@ -74,8 +74,8 @@ public class RowSets {
   }
   
   /**
-   * @param arraysOfVectorValues an array of other arrays that correspond
-   * to vector array.
+   * @param arraysOfVectorValues an values of other arrays that correspond
+   * to vector values.
    * @return the {@link RowSet} holding the corresponding {@link Vector}s.
    */
   public static RowSet rowSet(Value[][] arraysOfVectorValues) {
@@ -88,7 +88,7 @@ public class RowSets {
   
   /**
    * @param listsOfVectorValues a list containing other lists that each
-   * consist of the array for a given {@link Vector}.
+   * consist of the values for a given {@link Vector}.
    * @return the {@link RowSet} holding the corresponding {@link Vector}s.
    */
   public static RowSet rowSet(List<List<Value>> listsOfVectorValues) {

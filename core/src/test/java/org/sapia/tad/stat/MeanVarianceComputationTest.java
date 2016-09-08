@@ -27,9 +27,9 @@ public class MeanVarianceComputationTest {
     );
    
     rows = RowSets.rowSet(new Value[][] {
-       Values.array(5, "row1"),
-       Values.array(10, "row2"),
-       Values.array(15, "row3")
+       Values.with(5, "row1"),
+       Values.with(10, "row2"),
+       Values.with(15, "row3")
     });
     
     comp = new SpreadStatsComputation();

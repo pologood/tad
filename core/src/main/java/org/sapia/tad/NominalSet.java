@@ -44,7 +44,7 @@ public class NominalSet {
   }
   
   /**
-   * @return this instance's {@link Nominal} array.
+   * @return this instance's {@link Nominal} values.
    */
   public Collection<Nominal> getValues() {
     return Collections.unmodifiableCollection(byName.values());
@@ -74,9 +74,9 @@ public class NominalSet {
   }
   
   /**
-   * @param nominals a {@link Collection} of nominal array.
+   * @param nominals a {@link Collection} of nominal values.
    * @return the {@link NominalSet} holding the {@link Nominal} instances corresponding to the
-   * given array.
+   * given values.
    */
   public static NominalSet newInstance(Collection<Value> nominals) {
     List<Nominal> nominalList = new ArrayList<>(nominals.size());
@@ -87,10 +87,10 @@ public class NominalSet {
   }
 
   /**
-   * @param nominals some nominal array (for which each will be assigned a value corresponding
-   * to its index in the given array.
+   * @param nominals some nominal values (for which each will be assigned a value corresponding
+   * to its index in the given values.
    * @return a new instance of this class, encapsulating {@link Nominal}s corresponding to the
-   * array given as input.
+   * values given as input.
    */
   public static NominalSet newInstance(Value...nominals) {
     List<Nominal> nominalList = new ArrayList<>(nominals.length);

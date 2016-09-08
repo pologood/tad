@@ -18,8 +18,8 @@ public class ChebyshevDistanceFunctionTest {
 
   @Test
   public void testComputeDistanceBetween() throws Exception {
-    Vector v1 = Vectors.vector(1, 1, 1);
-    Vector v2 = Vectors.vector(4, 5, 6);
+    Vector v1 = Vectors.withNumbers(1, 1, 1);
+    Vector v2 = Vectors.withNumbers(4, 5, 6);
 
     double distance = func.computeDistanceBetween(v1, v2);
 

@@ -28,9 +28,9 @@ public class DefaultDatasetTest {
             new DefaultColumn(2, Datatype.STRING, "col2")
         ),
         Data.list(
-            new DefaultVector(Values.array("00", "01", "02")),
-            new DefaultVector(Values.array("10", "11", "12")),
-            new DefaultVector(Values.array("20", "21", "22"))
+            new DefaultVector(Values.with("00", "01", "02")),
+            new DefaultVector(Values.with("10", "11", "12")),
+            new DefaultVector(Values.with("20", "21", "22"))
         )
     );
     

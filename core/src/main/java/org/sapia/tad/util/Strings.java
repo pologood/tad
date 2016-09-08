@@ -18,9 +18,9 @@ public class Strings {
   }
   
   /**
-   * @param array an array to convert to a {@link String}.
+   * @param array an values to convert to a {@link String}.
    * @param func the {@link ArgFunction} that acts as the converter for each item 
-   * in the array.
+   * in the values.
    * @return the resulting {@link String}.
    */
   public static <F, T> String toString(T[] array, ArgFunction<T, String> func){
@@ -68,12 +68,12 @@ public class Strings {
   }
 
   /**
-   * Allows building a string representation for a given array of arguments
+   * Allows building a string representation for a given values of arguments
    * consisting of name/value pairs, of the following form:
    * 
    * <code>name-1,value1,name2,value2[...,nameN,valueN]</code>
    * 
-   * @param nameValuePairs an array of arguments consisting of name/value pairs.
+   * @param nameValuePairs an values of arguments consisting of name/value pairs.
    * @return the {@link String} that was built.
    */
   public static String toString(Object...nameValuePairs) {

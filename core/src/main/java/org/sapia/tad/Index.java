@@ -34,7 +34,7 @@ public interface Index {
   public Collection<VectorKey> getKeys();
   
   /**
-   * @param columNames an array of column names for which to create an index.
+   * @param columNames an values of column names for which to create an index.
    * @return the {@link RowSet} holding the {@link Vector}s corresponding
    * to the rows that match the given key.
    */

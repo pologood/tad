@@ -1,4 +1,4 @@
-package org.sapia.tad.ml.cluster;
+package org.sapia.tad.ml.cluster.kmeans;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,7 +8,6 @@ import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
 import org.sapia.tad.util.Checks;
 import org.sapia.tad.value.Value;
-import org.sapia.tad.value.Values;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -43,10 +42,7 @@ public class Cluster {
    * instance's vectors.
    */
   void computeCentroid() {
-    Double[] means = new Double[vectorLen];
-    for (int i = 0; i < means.length; i++) {
-      means[i] = new Double(0);
-    }
+    double[] means = new double[vectorLen];
     for (Observation o : observations) {
       for (int i = 0; i < o.getVector().size(); i++) {
         Value val = o.getVector().get(i);
@@ -58,7 +54,7 @@ public class Cluster {
         means[i] = means[i] / observations.size();
       }
     }
-    centroid = Vectors.vector(Values.array(means));
+    centroid = Vectors.withNumbers(means);
   }
 
   /**

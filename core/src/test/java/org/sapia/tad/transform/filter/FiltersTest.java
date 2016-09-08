@@ -26,7 +26,7 @@ public class FiltersTest {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = new ArrayList<>(50);
     for (int i : Numbers.range(50)) {
-      rows.add(Vectors.vector(new Integer(i), "s1", "s2"));
+      rows.add(Vectors.with(new Integer(i), "s1", "s2"));
     }
     dataset = new DefaultDataset(columns, rows);
   }
@@ -35,9 +35,9 @@ public class FiltersTest {
   public void testRemoveNullsDatasetForAllColumns() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = Data.list(
-      Vectors.vector(null, "s1"),
-      Vectors.vector("s0", null),
-      Vectors.vector("s0", "s1")
+      Vectors.with(null, "s1"),
+      Vectors.with("s0", null),
+      Vectors.with("s0", "s1")
     );
         
     dataset = new DefaultDataset(columns, rows);    
@@ -57,9 +57,9 @@ public class FiltersTest {
   public void testRemoveNullsDatasetForSomeColumns() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = Data.list(
-      Vectors.vector(null, "s1"),
-      Vectors.vector("s0", null),
-      Vectors.vector("s0", "s1")
+      Vectors.with(null, "s1"),
+      Vectors.with("s0", null),
+      Vectors.with("s0", "s1")
     );
         
     dataset = new DefaultDataset(columns, rows);    
@@ -77,9 +77,9 @@ public class FiltersTest {
   public void testRemoveAnyNulls() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = Data.list(
-      Vectors.vector(null, "s1"),
-      Vectors.vector("s0", null),
-      Vectors.vector("s0", "s1")
+      Vectors.with(null, "s1"),
+      Vectors.with("s0", null),
+      Vectors.with("s0", "s1")
     );
         
     dataset = new DefaultDataset(columns, rows);    
@@ -96,9 +96,9 @@ public class FiltersTest {
   public void testReplace() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC);
     List<Vector> rows = Data.list(
-      Vectors.vector(0),
-      Vectors.vector(1),
-      Vectors.vector(2)
+      Vectors.with(0),
+      Vectors.with(1),
+      Vectors.with(2)
     );    
     
     dataset = new DefaultDataset(columns, rows);
@@ -114,9 +114,9 @@ public class FiltersTest {
   public void testReplaceWithNominal() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.STRING);
     List<Vector> rows = Data.list(
-      Vectors.vector("VAL0"),
-      Vectors.vector("VAL1"),
-      Vectors.vector("VAL2")
+      Vectors.with("VAL0"),
+      Vectors.with("VAL1"),
+      Vectors.with("VAL2")
     );    
     
     dataset = new DefaultDataset(columns, rows);
@@ -172,7 +172,7 @@ public class FiltersTest {
   public void testSelectWithNullValue() {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.STRING);
     List<Vector> rows = new ArrayList<>();
-    rows.add(Vectors.vector("val0"));
+    rows.add(Vectors.with("val0"));
     rows.add(new DefaultVector(new Object[] { null }));
     Dataset ds = new DefaultDataset(columns, rows);
     Dataset subset = Filters.select(ds, "col0 != null");

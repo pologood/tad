@@ -1,11 +1,11 @@
-package org.sapia.tad.ml.cluster;
+package org.sapia.tad.ml.cluster.kmeans;
 
 import lombok.RequiredArgsConstructor;
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Vector;
 import org.sapia.tad.concurrent.TaskExecutor;
 import org.sapia.tad.ml.distance.DistanceFunction;
-import org.sapia.tad.ml.distance.Distances;
+import org.sapia.tad.ml.distance.DistanceFunctions;
 import org.sapia.tad.transform.slice.Slices;
 import org.sapia.tad.util.KVPair;
 
@@ -28,7 +28,7 @@ public class KMeansClusteringAlgo {
   // function, which in this context minimizes cluster variance.
   // For an interesting discussion on that topic, see:
   // http://stats.stackexchange.com/questions/81481/why-does-k-means-clustering-algorithm-use-only-euclidean-distance-metric
-  private final DistanceFunction distanceFunction = Distances.euclidian();
+  private final DistanceFunction distanceFunction = DistanceFunctions.euclidian();
 
 
   public List<Cluster> run() throws InterruptedException {

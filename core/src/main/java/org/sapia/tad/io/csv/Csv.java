@@ -139,7 +139,7 @@ public class Csv {
   }
   
   /**
-   * @param values the {@link Map} of setting array to use.
+   * @param values the {@link Map} of setting values to use.
    * @return a new {@link Dataset}.
    * @throws IOException if an IO error occurs attempting to load the dataset.
    */

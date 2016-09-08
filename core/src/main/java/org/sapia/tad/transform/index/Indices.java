@@ -53,11 +53,7 @@ public class Indices {
         Value[] rowValues = new Value[dataset.getColumnSet().size()];
         for (Column c : dataset.getColumnSet()) {
           Value v = result.get(c, NullValue.getInstance());
-          if (NullValue.isNull(v)) {
-            rowValues[c.getIndex()] = null;
-          } else {
-            rowValues[c.getIndex()] = v;
-          }
+          rowValues[c.getIndex()] = v;
         }
         aggregatedRows.add(new DefaultVector(rowValues));
       } catch (InterruptedException e) {

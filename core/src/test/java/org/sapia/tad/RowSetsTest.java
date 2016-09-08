@@ -15,8 +15,8 @@ public class RowSetsTest {
   public void setUp() {
 
     rowset = RowSets.rowSet(new Value[][] {
-       Values.array(1d, 2d, 3d),
-       Values.array(1d, 2d, 3d)
+       Values.with(1d, 2d, 3d),
+       Values.with(1d, 2d, 3d)
     });
   }
 

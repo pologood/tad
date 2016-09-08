@@ -80,7 +80,7 @@ public class Views {
    * Assigns new column names to the given dataset.
    * 
    * @param dataset a {@link Dataset}.
-   * @param newColumnNames the array of new column names.
+   * @param newColumnNames the values of new column names.
    * @return a new {@link Dataset}, with the new column names.
    */
   @Doc("Renames the given dataset's columns, assigning to these the given column names")
@@ -109,7 +109,7 @@ public class Views {
   @Doc("Renames the given dataset's selected columns, with the new names given")
   public static Dataset rename(
       @Doc("a dataset") Dataset dataset, 
-      @Doc("a map holding the current names to replace as keys, and the new names as corresponding array")
+      @Doc("a map holding the current names to replace as keys, and the new names as corresponding values")
       Map<String, String> oldNamesVsNewNames) {
     List<Column> columns = new ArrayList<>(oldNamesVsNewNames.size());
     for (Column currentColumn : dataset.getColumnSet()) {

@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * An instance of this class wraps another vector, only "showing" array
+ * An instance of this class wraps another vector, only "showing" values
  * of that other vector that correspond to the columns selected as part of the
  * view.
  * 

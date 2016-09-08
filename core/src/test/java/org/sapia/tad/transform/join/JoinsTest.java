@@ -19,10 +19,10 @@ public class JoinsTest {
             "fkey1", Datatype.STRING
         ),
         Data.list(
-            Vectors.vector("01", "001", "id0", "id1"),
-            Vectors.vector("01", "002", "id0", "id1"),
-            Vectors.vector("02", "003", "id2", "id3"),
-            Vectors.vector("02", "004", "id2", "id3")
+            Vectors.with("01", "001", "id0", "id1"),
+            Vectors.with("01", "002", "id0", "id1"),
+            Vectors.with("02", "003", "id2", "id3"),
+            Vectors.with("02", "004", "id2", "id3")
         )
     );
     
@@ -34,10 +34,10 @@ public class JoinsTest {
             "key1", Datatype.STRING
         ),
         Data.list(
-            Vectors.vector("03", "005", "id0", "id1"),
-            Vectors.vector("03", "006", "id0", "id1"),
-            Vectors.vector("04", "007", "id2", "id3"),
-            Vectors.vector("04", "008", "id2", "id3")
+            Vectors.with("03", "005", "id0", "id1"),
+            Vectors.with("03", "006", "id0", "id1"),
+            Vectors.with("04", "007", "id2", "id3"),
+            Vectors.with("04", "008", "id2", "id3")
         )
     );
   }

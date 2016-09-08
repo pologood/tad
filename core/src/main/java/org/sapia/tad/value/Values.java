@@ -10,7 +10,7 @@ public class Values {
   private Values() {
   }
 
-  /*public static Value[] array(double...doubleValues) {
+  public static Value[] withNumbers(double...doubleValues) {
     Value[] values = new Value[doubleValues.length];
     for (int i = 0; i < values.length; i++) {
       values[i] = NumericValue.of(doubleValues[i]);
@@ -18,19 +18,19 @@ public class Values {
     return values;
   }
 
-  public static Value[] array(int...intValues) {
+  public static Value[] withNumbers(int...intValues) {
     Value[] values = new Value[intValues.length];
     for (int i = 0; i < values.length; i++) {
       values[i] = NumericValue.of(intValues[i]);
     }
     return values;
-  }*/
+  }
 
   /**
-   * @param objects some objects with which to create an array of {@link Value}s.
-   * @return array of  {@link Value}s .
+   * @param objects some objects with which to create an values of {@link Value}s.
+   * @return an array of {@link Value}s .
    */
-  public static Value[] array(Object...objects) {
+  public static Value[] with(Object...objects) {
     Value[] values = new Value[objects.length];
     for (int i = 0; i < values.length; i++) {
       if (objects[i] instanceof Value) {

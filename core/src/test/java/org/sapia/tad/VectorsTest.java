@@ -17,7 +17,7 @@ public class VectorsTest {
 
   @Before
   public void setUp() {
-    vector = new DefaultVector(Values.array(0, 1, 2, 3));
+    vector = new DefaultVector(Values.with(0, 1, 2, 3));
   }
 
   @Test
@@ -29,7 +29,7 @@ public class VectorsTest {
 
   @Test
   public void testVector_from_objects() throws Exception {
-    vector = Vectors.vector(0, 1, 2, 3);
+    vector = Vectors.withNumbers(0, 1, 2, 3);
     for (int i : Numbers.range(0, 4)) {
       assertEquals(NumericValue.of(i), vector.get(i));
     }
@@ -37,7 +37,7 @@ public class VectorsTest {
 
   @Test
   public void testVector_from_value_list() throws Exception {
-    vector = Vectors.vector(
+    vector = Vectors.withValues(
        Arrays.asList(
             NumericValue.of(0),
             NumericValue.of(1),
@@ -52,7 +52,7 @@ public class VectorsTest {
 
   @Test
   public void testSort() throws Exception {
-    vector = Vectors.vector(3, 2, 1 ,0);
+    vector = Vectors.withNumbers(3, 2, 1 ,0);
     vector = Vectors.sort((v1, v2) -> {
       if (v1.get() == v2.get()) {
         return 0;
@@ -69,14 +69,14 @@ public class VectorsTest {
 
   @Test
   public void testProduct() {
-    Vector otherVector = Vectors.vector(Values.array(4, 5, 6, 7));
+    Vector otherVector = Vectors.withNumbers(4, 5, 6, 7);
     double product = vector.product(otherVector);
     assertEquals(0 * 4 + 1 * 5 + 2 * 6 + 3 *7, product, 0);
   }
 
   @Test
   public void testSum() {
-    Vector otherVector = Vectors.vector(Values.array(4, 5, 6, 7));
+    Vector otherVector = Vectors.withNumbers(4, 5, 6, 7);
     Vector sum = vector.sum(otherVector);
     assertEquals(4, sum.get(0).get(), 0);
     assertEquals(6, sum.get(1).get(), 0);

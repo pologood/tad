@@ -1,7 +1,7 @@
 package org.sapia.tad.value;
 
 /**
- * Specifies the behavior for array held in {@link org.sapia.tad.Vector}s.
+ * Specifies the behavior for values held in {@link org.sapia.tad.Vector}s.
  *
  * @author yduchesne
  */

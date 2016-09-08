@@ -27,9 +27,9 @@ public class MergedColumnsDatasetTest {
             (Column) new DefaultColumn(2, Datatype.STRING, "col2")
         ),
         Data.list(
-            (Vector) new DefaultVector(Values.array("00", "01", "02")),
-            (Vector) new DefaultVector(Values.array("10", "11", "12")),
-            (Vector) new DefaultVector(Values.array("20", "21", "22"))
+            (Vector) new DefaultVector(Values.with("00", "01", "02")),
+            (Vector) new DefaultVector(Values.with("10", "11", "12")),
+            (Vector) new DefaultVector(Values.with("20", "21", "22"))
         )
     );
     
@@ -40,9 +40,9 @@ public class MergedColumnsDatasetTest {
             (Column) new DefaultColumn(2, Datatype.STRING, "col5")
         ),
         Data.list(
-            (Vector) new DefaultVector(Values.array("03", "04", "05")),
-            (Vector) new DefaultVector(Values.array("13", "14", "15")),
-            (Vector) new DefaultVector(Values.array("23", "24", "25"))
+            (Vector) new DefaultVector(Values.with("03", "04", "05")),
+            (Vector) new DefaultVector(Values.with("13", "14", "15")),
+            (Vector) new DefaultVector(Values.with("23", "24", "25"))
         )
     );
     

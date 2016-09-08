@@ -151,7 +151,7 @@ public class Stats {
           normalizedValues[i] = NumericValue.zero();
         }
       }
-      normalizedVectors.add(Vectors.vector(normalizedValues));
+      normalizedVectors.add(Vectors.withValues(normalizedValues));
     }
 
     return new DefaultDataset(input.getColumnSet(), normalizedVectors);

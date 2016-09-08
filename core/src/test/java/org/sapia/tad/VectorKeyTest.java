@@ -23,7 +23,7 @@ public class VectorKeyTest {
     
     key = new VectorKey(
        columns,
-       Values.array(0,1)
+       Values.with(0,1)
     );
   }
 

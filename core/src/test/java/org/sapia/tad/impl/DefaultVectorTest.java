@@ -18,7 +18,7 @@ public class DefaultVectorTest {
   
   @Before
   public void setUp() {
-    vector = new DefaultVector(Values.array(0, 1, 2, 3));
+    vector = new DefaultVector(Values.with(0, 1, 2, 3));
   }
   
   @Test

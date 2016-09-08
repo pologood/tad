@@ -1,11 +1,10 @@
 package org.sapia.tad;
 
 import org.sapia.tad.impl.DefaultVector;
-import org.sapia.tad.type.DataTypeStrategies;
 import org.sapia.tad.util.Checks;
-import org.sapia.tad.value.NullValue;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
+import org.sapia.tad.value.Values;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -17,10 +16,18 @@ public class Vectors {
   }
   
   /**
-   * @param values the array with which to create a {@link Vector}.
+   * @param values the values with which to create a {@link Vector}.
    * @return the {@link Vector} that was created.
    */
-  public static Vector vector(Value...values) {
+  public static Vector withValues(Value...values) {
+    return new DefaultVector(values);
+  }
+
+  /**
+   * @param values a {@link List} of values.
+   * @return the {@link Vector} that was created, holding the given values.
+   */
+  public static Vector withValues(List<Value> values) {
     return new DefaultVector(values);
   }
 
@@ -28,32 +35,30 @@ public class Vectors {
    * @param objects some objects with which to create a {@link Vector}.
    * @return the {@link Vector} that was created.
    */
-  public static Vector vector(Object...objects) {
-    Value[] values = new Value[objects.length];
-    for (int i = 0; i < values.length; i++) {
-      if (objects[i] instanceof Value) {
-        values[i] = (Value) objects[i];
-      } else if (objects[i] == null) {
-        values[i] = NullValue.getInstance();
-      } else {
-        values[i] = DataTypeStrategies.getDataTypeStrategyFor(objects[i]).getValueFor(objects[i]);
-      }
-    }
-    return new DefaultVector(values);
+  public static Vector with(Object...objects) {
+    return new DefaultVector(Values.with(objects));
   }
 
   /**
-   * @param values a {@link List} of array.
-   * @return the {@link Vector} that was created, holding the given array.
+   * @param values one or more double values to vectorize.
+   * @return the {@link Vector} that was created using the given values.
    */
-  public static Vector vector(List<Value> values) {
-    return new DefaultVector(values);
+  public static Vector withNumbers(double...values) {
+    return new DefaultVector(Values.withNumbers(values));
   }
-  
+
   /**
-   * @param c the {@link Comparator} to use to sort the given vector's array.
+   * @param values one or more of double values to vectorize.
+   * @return the {@link Vector} that was created using the given values.
+   */
+  public static Vector withNumbers(int...values) {
+    return new DefaultVector(Values.withNumbers(values));
+  }
+
+  /**
+   * @param c the {@link Comparator} to use to sort the given vector's values.
    * @param toSort the {@link Vector} to sort.
-   * @return a new {@link Vector}, with its array sorted.
+   * @return a new {@link Vector}, with its values sorted.
    */
   public static Vector sort(Comparator<Value> c, Vector toSort) {
     Value[] values = toSort.toArray();

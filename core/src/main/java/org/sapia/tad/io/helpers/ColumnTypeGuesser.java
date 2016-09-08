@@ -21,7 +21,7 @@ public class ColumnTypeGuesser {
   
   /**
    * @param line a content {@link Line}.
-   * @return the array of {@link Datatype}s corresponding to the different columns
+   * @return the values of {@link Datatype}s corresponding to the different columns
    * in the given line, or <code>null</code> if the column data types could not be determined.
    */
   public Datatype[] guessColumnType(Line line) {

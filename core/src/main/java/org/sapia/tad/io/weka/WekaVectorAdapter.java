@@ -49,7 +49,7 @@ public class WekaVectorAdapter implements Vector {
   }
   
   private Value doGet(int index) {
-    Checks.isFalse(index >= instance.numAttributes(), "Invalid index: %s. Got %s array", index, instance.numAttributes());
+    Checks.isFalse(index >= instance.numAttributes(), "Invalid index: %s. Got %s values", index, instance.numAttributes());
     Attribute attr = instance.attribute(index);
     Value value;
     if (instance.isMissing(attr.index())) {

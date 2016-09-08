@@ -26,7 +26,7 @@ public class SliceDatasetTest {
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = new ArrayList<>(50);
     for (int i : Numbers.range(50)) {
-      rows.add(Vectors.vector(new Integer(i), "s1", "s2"));
+      rows.add(Vectors.with(new Integer(i), "s1", "s2"));
     }
     slice = new SliceDataset(new DefaultDataset(columns, rows), START, END);
   }

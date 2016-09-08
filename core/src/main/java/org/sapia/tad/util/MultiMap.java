@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * Binds a single key to a collection of array.
+ * Binds a single key to a collection of values.
  * 
  * @author yduchesne
  */
@@ -17,7 +17,7 @@ public interface MultiMap<K, V> {
   
   /**
    * @param key a key.
-   * @return the {@link Collection} of array bound to the given key - will be empty rather than
+   * @return the {@link Collection} of values bound to the given key - will be empty rather than
    * null if no element has yet been bound to the key.
    */
   public Collection<V> get(K key);

@@ -5,7 +5,7 @@ import org.sapia.tad.Vector;
 import org.sapia.tad.value.Value;
 
 /**
- * Abstracts formatting of {@link Vector} array.
+ * Abstracts formatting of {@link Vector} values.
  * 
  * @author yduchesne
  *

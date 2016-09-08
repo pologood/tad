@@ -45,7 +45,7 @@ public class Objects {
   }
   
   /**
-   * Computes a "compounded" hash code, for a whole array of objects.
+   * Computes a "compounded" hash code, for a whole values of objects.
    * Safely handles <code>null</code>s.
    * 
    * @param obj one or more object for which to compute a hash code.

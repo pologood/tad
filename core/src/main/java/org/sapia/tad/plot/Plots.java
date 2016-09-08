@@ -64,7 +64,7 @@ public class Plots {
       .name("y")
       .type(String[].class)
       .mandatory()
-      .description("array of names of the columns used for the Y-axis")
+      .description("values of names of the columns used for the Y-axis")
     .setting()
       .name("label_x")
       .type(String.class)
@@ -82,15 +82,15 @@ public class Plots {
       .name("column")
       .type(String.class)
       .mandatory()
-      .description("name of the column whose array will be used for the plot")
+      .description("name of the column whose values will be used for the plot")
     .setting()
       .name("gradient_start")
       .type(List.class)
-      .description("a list holding 3 rgb color array for the gradient start color")
+      .description("a list holding 3 rgb color values for the gradient start color")
     .setting()
       .name("gradient_end")
       .type(List.class)
-      .description("a list holding 3 rgb color array for the gradient end color")
+      .description("a list holding 3 rgb color values for the gradient end color")
     .finish();
 
   
@@ -119,15 +119,15 @@ public class Plots {
   
   /**
    * @param dataset a {@link Dataset}.
-   * @param x_axis_columnName the name of the dataset column used for the X-axis array.
-   * @param y_axis_columnNames the names of the dataset columns used for the Y-axis array.
+   * @param x_axis_columnName the name of the dataset column used for the X-axis values.
+   * @param y_axis_columnNames the names of the dataset columns used for the Y-axis values.
    * @return a new {@link XYPlot}.
    */
   @Doc("Creates a XYPlot, given a dataset column names indicating which columns to use for the X/Y axis")
   public static final XYPlot xyplot(
       @Doc("dataset to plot") Dataset dataset, 
-      @Doc("name of the column to use for X axis array") String x_axis_columnName,
-      @Doc("names of the columns to use for Y axis array") String...y_axis_columnNames) {
+      @Doc("name of the column to use for X axis values") String x_axis_columnName,
+      @Doc("names of the columns to use for Y axis values") String...y_axis_columnNames) {
     XYPlot plot = PlotProviderFactory.getProvider().newXYPlot();
     plot.setDataset(dataset);
     plot.setX(x_axis_columnName);
@@ -137,14 +137,14 @@ public class Plots {
   
   /**
    * @param dataset a {@link Dataset}.
-   * @param config a {@link Map} holding the setting array for the {@link XYPlot}.
+   * @param config a {@link Map} holding the setting values for the {@link XYPlot}.
    * @return a new {@link XYPlot}.
    */
   @Doc(
       value = "Creates a XYPlot, given a dataset and plot settings",
       examples =  {
-          @Example(caption="Basic usage - x and y axis columns", content="xyplot(dataset, settings(\"x\", \"car_cyl\", \"y\", array(\"car_mpg\")))"),
-          @Example(caption="With title and axis labels", content="xyplot(dataset, settings(\"x\", \"car_cyl\", \"y\", array(\"car_mpg\")" + 
+          @Example(caption="Basic usage - x and y axis columns", content="xyplot(dataset, settings(\"x\", \"car_cyl\", \"y\", values(\"car_mpg\")))"),
+          @Example(caption="With title and axis labels", content="xyplot(dataset, settings(\"x\", \"car_cyl\", \"y\", values(\"car_mpg\")" +
                     ", \"label_x\", \"CYL\", \"label_y\", \"MPG\"\")))")
       })
   public static final XYPlot xyplot(
@@ -163,14 +163,14 @@ public class Plots {
   
   /**
    * @param dataset a {@link Dataset}.
-   * @param config a {@link Map} holding the setting array for the {@link LinePlot}.
+   * @param config a {@link Map} holding the setting values for the {@link LinePlot}.
    * @return a new {@link LinePlot}.
    */
   @Doc(
       value = "Creates a LinePlot, given a dataset and plot settings",
       examples =  {
-          @Example(caption="Basic usage - x and y axis columns", content="lineplot(dataset, settings(\"x\", \"car_cyl\", \"y\", array(\"car_mpg\")))"),
-          @Example(caption="With title and axis labels", content="lineplot(dataset, settings(\"x\", \"car_cyl\", \"y\", array(\"car_mpg\")" + 
+          @Example(caption="Basic usage - x and y axis columns", content="lineplot(dataset, settings(\"x\", \"car_cyl\", \"y\", values(\"car_mpg\")))"),
+          @Example(caption="With title and axis labels", content="lineplot(dataset, settings(\"x\", \"car_cyl\", \"y\", values(\"car_mpg\")" +
                     ", \"label_x\", \"CYL\", \"label_y\", \"MPG\"\")))")
       })
   public static final LinePlot lineplot(

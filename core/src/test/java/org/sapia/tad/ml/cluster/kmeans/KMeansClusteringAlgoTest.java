@@ -1,4 +1,4 @@
-package org.sapia.tad.ml.cluster;
+package org.sapia.tad.ml.cluster.kmeans;
 
 import org.junit.After;
 import org.junit.Before;
@@ -38,15 +38,15 @@ public class KMeansClusteringAlgoTest {
   @Before
   public void setUp() throws Exception {
     List<Vector> vectors = Data.list(
-            Vectors.vector(1, 2, 3),
-            Vectors.vector(4, 5, 6),
-            Vectors.vector(7, 8, 9),
-            Vectors.vector(40, 41, 42),
-            Vectors.vector(43, 44, 45),
-            Vectors.vector(46, 47, 48),
-            Vectors.vector(100, 101, 102),
-            Vectors.vector(103, 104, 105),
-            Vectors.vector(106, 107, 108)
+            Vectors.withNumbers(1, 2, 3),
+            Vectors.withNumbers(4, 5, 6),
+            Vectors.withNumbers(7, 8, 9),
+            Vectors.withNumbers(40, 41, 42),
+            Vectors.withNumbers(43, 44, 45),
+            Vectors.withNumbers(46, 47, 48),
+            Vectors.withNumbers(100, 101, 102),
+            Vectors.withNumbers(103, 104, 105),
+            Vectors.withNumbers(106, 107, 108)
     );
     Collections.shuffle(vectors);
 
@@ -85,12 +85,12 @@ public class KMeansClusteringAlgoTest {
     for (Cluster c : clusters) {
       assertThat(c.getObservations()).hasSize(3);
       Set<Vector> vectors = c.getObservations().stream().map(Observation::getVector).collect(Collectors.toSet());
-      if (vectors.contains(Vectors.vector(4, 5, 6))) {
-        assertThat(vectors).contains(Vectors.vector(1, 2, 3), Vectors.vector(7, 8, 9));
-      } else if (vectors.contains(Vectors.vector(43, 44, 45))) {
-        assertThat(vectors).contains(Vectors.vector(40, 41, 42), Vectors.vector(46, 47, 48));
-      } else if (vectors.contains(Vectors.vector(103, 104, 105))) {
-        assertThat(vectors).contains(Vectors.vector(100, 101, 102), Vectors.vector(106, 107, 108));
+      if (vectors.contains(Vectors.withNumbers(4, 5, 6))) {
+        assertThat(vectors).contains(Vectors.withNumbers(1, 2, 3), Vectors.withNumbers(7, 8, 9));
+      } else if (vectors.contains(Vectors.withNumbers(43, 44, 45))) {
+        assertThat(vectors).contains(Vectors.withNumbers(40, 41, 42), Vectors.withNumbers(46, 47, 48));
+      } else if (vectors.contains(Vectors.withNumbers(103, 104, 105))) {
+        assertThat(vectors).contains(Vectors.withNumbers(100, 101, 102), Vectors.withNumbers(106, 107, 108));
       } else {
         throw new IllegalStateException("None of the expected vectors has been found");
       }

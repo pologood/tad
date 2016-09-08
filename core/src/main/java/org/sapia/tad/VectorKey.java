@@ -8,7 +8,7 @@ import org.sapia.tad.value.Value;
 
 /**
  * An instance of this class allows to create keys over collections of {@link Vector}s.
- * It will be used to match some of the array of these vectors, given a specified column
+ * It will be used to match some of the values of these vectors, given a specified column
  * set.
  * 
  * @author yduchesne
@@ -21,7 +21,7 @@ public class VectorKey implements Comparable<VectorKey> {
   
   /**
    * @param columns the {@link ColumnSet} describing the vector structure.
-   * @param columnValues the {@link Vector} whose array are to be used.
+   * @param columnValues the {@link Vector} whose values are to be used.
    */
   public VectorKey(ColumnSet columns, Vector columnValues) {
     this.columns = columns;
@@ -58,7 +58,7 @@ public class VectorKey implements Comparable<VectorKey> {
   }
   
   /**
-   * @return a copy of this instance's array.
+   * @return a copy of this instance's values.
    */
   public Value[] getValues() {
     Value[] toReturn = new Value[values.length];

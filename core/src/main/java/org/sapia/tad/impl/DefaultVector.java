@@ -21,7 +21,7 @@ public class DefaultVector implements Vector {
   private Value[] values;
   
   /**
-   * @param values the array of array to wrap.
+   * @param values the values to wrap.
    */
   public DefaultVector(Value...values) {
     this.values = values;
@@ -33,10 +33,10 @@ public class DefaultVector implements Vector {
   }
 
   /**
-   * @param values an array of arbitrary objects for which to create an instance of this class.
+   * @param values an values of arbitrary objects for which to create an instance of this class.
    */
   public DefaultVector(Object...values) {
-    this(Values.array(values));
+    this(Values.with(values));
   }
 
   public DefaultVector(List<Value> values) {
@@ -46,7 +46,7 @@ public class DefaultVector implements Vector {
   @Override
   public Value get(int index) throws IllegalArgumentException {
     if (index < 0 || index >= values.length) {
-      throw new IllegalArgumentException(String.format("Invalid index: %s. Got %s array", index, values.length));
+      throw new IllegalArgumentException(String.format("Invalid index: %s. Got %s values", index, values.length));
     }
     return values[index];
   }

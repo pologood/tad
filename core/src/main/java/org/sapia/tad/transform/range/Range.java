@@ -24,7 +24,7 @@ public class Range implements Value, SelfFormattable {
   private Value min, max;
   
   /**
-   * @param comp the {@link Comparator} to use to compare the min and max array.
+   * @param comp the {@link Comparator} to use to compare the min and max values.
    * @param min a minimum value.
    * @param max a maximum value.
    */

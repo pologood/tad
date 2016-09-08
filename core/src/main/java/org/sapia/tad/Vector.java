@@ -3,7 +3,7 @@ package org.sapia.tad;
 import org.sapia.tad.value.Value;
 
 /**
- * A {@link Vector} is a simple, immutable array-like data structure. Vectors are typically used
+ * A {@link Vector} is a simple, immutable values-like data structure. Vectors are typically used
  * as rows in {@link Dataset}s or {@link RowSet}s.
  * 
  * @author yduchesne
@@ -24,14 +24,14 @@ public interface Vector extends Iterable<Value> {
   public Value get(int index) throws IllegalArgumentException;
   
   /**
-   * @param indices the indices whose corresponding array should be returned.
-   * @return a new {@link Vector} holding the array at the given indices.
+   * @param indices the indices whose corresponding values should be returned.
+   * @return a new {@link Vector} holding the values at the given indices.
    * @throws IllegalArgumentException if anyone of the given indices is invalid.
    */
   public Vector subset(int...indices) throws IllegalArgumentException;
  
   /**
-   * @return an array holding this instance's array.
+   * @return an values holding this instance's values.
    */
   public Value[] toArray();
 

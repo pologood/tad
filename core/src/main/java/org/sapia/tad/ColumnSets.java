@@ -32,7 +32,7 @@ public class ColumnSets {
   
   /**
    * A convenience for creating multiple {@link ColumnSet}s by passing the required parameters
-   * for each intended column set in a single array.
+   * for each intended column set in a single values.
    * <p>
    * Example:
    * <pre>
@@ -40,13 +40,13 @@ public class ColumnSets {
    * </pre>
    * This method does an <code>instance of</code> check to determine which is which.
    * <p>
-   * The following types of array, for each intended column, must specified:
+   * The following types of values, for each intended column, must specified:
    * <ul>
    *   <li> the column's {@link Datatype}.
    *   <li> the column's name.
    * </ul>
    * 
-   * @param columnParameters an array of column parameters.
+   * @param columnParameters an values of column parameters.
    * @return a new {@link ColumnSet}.
    */
   public static ColumnSet columnSet(Object...columnParameters) {

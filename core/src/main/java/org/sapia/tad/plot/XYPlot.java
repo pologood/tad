@@ -2,7 +2,7 @@ package org.sapia.tad.plot;
 
 
 /**
- * An instance of this interface is expected to plot dataset column array on
+ * An instance of this interface is expected to plot dataset column values on
  * an XY chart.
  * 
  * @author yduchesne

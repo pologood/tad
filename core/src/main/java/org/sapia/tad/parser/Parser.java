@@ -4,7 +4,7 @@ import org.sapia.tad.Vector;
 import org.sapia.tad.value.Value;
 
 /**
- * Specifies the behavior for converting {@link Vector} array out of string content.
+ * Specifies the behavior for converting {@link Vector} values out of string content.
  * 
  * @author yduchesne
  *

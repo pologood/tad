@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Holds setting array.
+ * Holds setting values.
  * 
  * @see Settings
  * 
@@ -46,11 +46,11 @@ public class SettingValues extends HashMap<String, Object> {
   }
   
   /**
-   * Builds an instance of this class, given an array of the form:
+   * Builds an instance of this class, given an values of the form:
    * <p>
    * <code>name1, value1, name2, value[,nameN,valueN...]</code>
    * 
-   * @param nameValuePairs an array of name/value pairs.
+   * @param nameValuePairs an values of name/value pairs.
    * @return the {@link SettingValues} created from the given name/value pairs.
    */
   public static SettingValues valueOf(Object...nameValuePairs) {

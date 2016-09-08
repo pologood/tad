@@ -94,7 +94,7 @@ public class Settings {
     }
     
     /**
-     * @param values a {@link Map} of array.
+     * @param values a {@link Map} of values.
      * @param expected the {@link Class} corresponding to the type of value that's expected.
      * @return the value corresponding to this instance's name, or <code>null</code> if
      * none is found, and this instance's <code>mandatory</code> flag is set to <code>false</code>.
@@ -113,7 +113,7 @@ public class Settings {
     }
     
     /**
-     * @param values a {@link Map} of array.
+     * @param values a {@link Map} of values.
      * @param defaultVal the default value to return if none is found in the 
      * given map.
      * @param expected the {@link Class} corresponding to the type of value that's expected.
@@ -133,7 +133,7 @@ public class Settings {
     }
 
     /**
-     * @param values the {@link Map} of array holding setting array.
+     * @param values the {@link Map} of values holding setting values.
      * @param enumClass the enum {@link Class} corresponding to the type of enum
      * that is expected.
      * @return the enum value corresponding to this setting.
@@ -178,7 +178,7 @@ public class Settings {
     }
 
     /**
-     * @param values the {@link Map} of array holding setting array.
+     * @param values the {@link Map} of values holding setting values.
      * @param defaultVal the default enum value if none is found.
      * @param enumClass the enum {@link Class} corresponding to the type of enum
      * that is expected.
@@ -225,7 +225,7 @@ public class Settings {
 
     
     /**
-     * @param values a {@link Map} of array.
+     * @param values a {@link Map} of values.
      * @param defaultVal the default value to return if none is found in the 
      * given map.
      * @param expected the {@link Class} corresponding to the type of value that's expected.
@@ -306,8 +306,8 @@ public class Settings {
   /**
    * Helper method for creating {@link SettingValues} - internally calls {@link SettingValues#valueOf(Object...)}.
    * 
-   * @param values the array to use.
-   * @return the {@link SettingValues} corresponding to the given array.
+   * @param values the values to use.
+   * @return the {@link SettingValues} corresponding to the given values.
    */
   public static SettingValues settings(Object...values) {
     return SettingValues.valueOf(values);
@@ -316,8 +316,8 @@ public class Settings {
   /**
    * Helper method for creating {@link SettingValues} - internally calls {@link SettingValues#valueOf(List)}.
    * 
-   * @param values the array to use.
-   * @return the {@link SettingValues} corresponding to the given array.
+   * @param values the values to use.
+   * @return the {@link SettingValues} corresponding to the given values.
    */
   public static SettingValues settings(List<? extends Object> values) {
     return SettingValues.valueOf(values);

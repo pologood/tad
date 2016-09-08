@@ -1,4 +1,4 @@
-package org.sapia.tad.ml.cluster;
+package org.sapia.tad.ml.cluster.kmeans;
 
 import lombok.*;
 import org.sapia.tad.Vector;

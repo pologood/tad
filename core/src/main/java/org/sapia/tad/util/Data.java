@@ -282,8 +282,8 @@ public class Data {
   }
   
   /**
-   * @param values some array.
-   * @return a new {@link Tuple} holding the given array.
+   * @param values some values.
+   * @return a new {@link Tuple} holding the given values.
    */
   public static Tuple tuple(Object...values) {
     return new Tuple(values);
@@ -291,29 +291,29 @@ public class Data {
   
   /**
    * @param items some items.
-   * @return an array wrapping the given items.
+   * @return an values wrapping the given items.
    */
   @SafeVarargs
-  @Doc("Returns an array for the given vargargs")
+  @Doc("Returns an values for the given vargargs")
   public static <T> T[] array(T...items) {
     return items;
   }
 
   /**
    * @param items a list of items.
-   * @return the array corresponding to the given list.
+   * @return the values corresponding to the given list.
    */
-  @Doc("Returns an array for the given list of items")
+  @Doc("Returns an values for the given list of items")
   public static Object[] array(List<Object> items) {
     return items.toArray(new Object[items.size()]);
   }
   
   /**
-   * @param criteria the array of array whose presence in the given collection should be checked.
+   * @param criteria the values of values whose presence in the given collection should be checked.
    * @param collection a {@link Collection}.
    * @return <code>true</code> if any one of the given criteria is found in the collection.
    */
-  @Doc("Tests if a given collection contains any of the items provided in an array")
+  @Doc("Tests if a given collection contains any of the items provided in an values")
   public static <C> boolean containsAny(C[] criteria, Collection<C> collection) {
     for (C c : criteria) {
       if (collection.contains(c)) {
@@ -324,11 +324,11 @@ public class Data {
   }
   
   /**
-   * @param criteria the array of array whose presence in the given collection should be checked.
+   * @param criteria the values of values whose presence in the given collection should be checked.
    * @param collection a {@link Collection}.
    * @return <code>true</code> if any one of the given criteria is found in the collection.
    */
-  @Doc("Tests if a given collection contains all the items provided in an array")
+  @Doc("Tests if a given collection contains all the items provided in an values")
   public static <C> boolean containsAll(C[] criteria, Collection<C> collection) {
     for (C c : criteria) {
       if (!collection.contains(c)) {
@@ -340,7 +340,7 @@ public class Data {
   
   /**
    * 
-   * @param criteria the object to use as a criterion.
+   * @param criterion the object to use as a criterion.
    * @param collection the {@link Collection} to check.
    * @return <code>true</code> if all the objects in the collection are equal to the
    * given one.
@@ -360,7 +360,7 @@ public class Data {
    * @param args the arguments, consisting of a sequence of key/value pairs.
    * @return the {@link Map} corresponding to the given arguments.
    */
-  @Doc("Builds a map out of the given array of key/value pairs")
+  @Doc("Builds a map out of the given values of key/value pairs")
   public static Map<Object, Object> map(Object...args) {
     Map<Object, Object> map = new HashMap<Object, Object>();
     for (int i = 0; i < args.length; i++) {

@@ -16,32 +16,32 @@ import org.sapia.tad.value.Value;
 import java.util.*;
 
 /**
- * Performs replacement of continuous array with corresponding ranges.
+ * Performs replacement of continuous values with corresponding ranges.
  * 
  * @author yduchesne
  *
  */
-@Doc("Performs replacement of continuous array with corresponding ranges")
+@Doc("Performs replacement of continuous values with corresponding ranges")
 public class Ranges {
 
   private Ranges() {
   }
   
   /**
-   * @param dataset the dataset whose given column array must be converted to a range.
+   * @param dataset the dataset whose given column values must be converted to a range.
    * @param partitionSize the size of each range partition.
-   * @param columnNames the names of the columns whose array should be transformed into ranges.
-   * @return a new {@link Dataset}, with the desired column array converted to ranges.
+   * @param columnNames the names of the columns whose values should be transformed into ranges.
+   * @return a new {@link Dataset}, with the desired column values converted to ranges.
    */
-  @Doc("Replaces continuous array with corresponding ranges, returns the thus processed dataset")
+  @Doc("Replaces continuous values with corresponding ranges, returns the thus processed dataset")
   public static Dataset range(
       @Doc("dataset to process") Dataset dataset, 
       @Doc("size of each range partitions") int partitionSize, 
-      @Doc("names of the columns whose array should be replaced by ranges") String...columnNames) {
+      @Doc("names of the columns whose values should be replaced by ranges") String...columnNames) {
 
     Map<Column, List<RangeRef>> rangeValuesByColumn = new HashMap<>(columnNames.length);
     
-    // building range array, for each column.
+    // building range values, for each column.
     for (String cn : columnNames) {
       Column col = dataset.getColumnSet().get(cn);
       Checks.isTrue(
@@ -90,7 +90,7 @@ public class Ranges {
       rangeValuesByColumn.put(col, ranges);
     }
     
-    // populating new dataset with range array, for relevant columns ---------
+    // populating new dataset with range values, for relevant columns ---------
     List<Vector> newRows = new ArrayList<>();
     for (int i = 0; i < dataset.size(); i++) {
       Vector row = dataset.getRow(i);

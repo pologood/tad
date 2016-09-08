@@ -5,9 +5,9 @@ package org.sapia.tad.ml.distance;
  *
  * @author yduchesne
  */
-public class Distances {
+public class DistanceFunctions {
 
-  private Distances() {
+  private DistanceFunctions() {
   }
 
   /**

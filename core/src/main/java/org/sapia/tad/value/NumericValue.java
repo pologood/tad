@@ -82,7 +82,7 @@ public class NumericValue implements Value, Comparable<NumericValue> {
   /**
    * @param v1 a {@link Value}
    * @param v2 another {@link Value} to sum with the previous one.
-   * @return a new {@link Value}, consisting of the sum of the array passed in.
+   * @return a new {@link Value}, consisting of the sum of the values passed in.
    */
   public static Value sum(Value v1, Value v2) {
     if (v1.isNumeric() && v2.isNumeric()) {
@@ -98,7 +98,7 @@ public class NumericValue implements Value, Comparable<NumericValue> {
   /**
    * @param v1 a {@link Value}
    * @param v2 another {@link Value} to sum with the previous one.
-   * @return a new {@link Value}, consisting of the sum of the array passed in.
+   * @return a new {@link Value}, consisting of the sum of the values passed in.
    */
   public static Value difference(Value v1, Value v2) {
     if (v1.isNumeric() && v2.isNumeric()) {
@@ -115,7 +115,7 @@ public class NumericValue implements Value, Comparable<NumericValue> {
   /**
    * @param v1 a {@link Value}
    * @param v2 another {@link Value} to sum with the previous one.
-   * @return a new {@link Value}, consisting of product of the array passed in.
+   * @return a new {@link Value}, consisting of product of the values passed in.
    */
   public static Value product(Value v1, Value v2) {
     if (v1.isNumeric() && v2.isNumeric()) {

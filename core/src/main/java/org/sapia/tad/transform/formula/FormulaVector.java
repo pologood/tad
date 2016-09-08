@@ -27,7 +27,7 @@ class FormulaVector implements Vector {
   public Value get(int index) throws IllegalArgumentException {
     Checks.isTrue(
         index < delegate.size() + formulas.length, 
-        "Invalid index: %s. Got %s array",  delegate.size() + formulas.length
+        "Invalid index: %s. Got %s values",  delegate.size() + formulas.length
     );
     if  (index < delegate.size()) {
       return delegate.get(index);

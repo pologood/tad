@@ -34,12 +34,12 @@ public class Filters {
   }
   
   /**
-   * Removes <code>null</code> array from the given dataset, for the specified columns.
+   * Removes <code>null</code> values from the given dataset, for the specified columns.
    * 
    * @param dataset the {@link Dataset} to filter.
    * @param columnNames the {@link List} of column names of the columns whose corresponding rows 
-   * with <code>null</code> array should be removed.
-   * @return a {@link Dataset} with the <code>null</code> array removed, for the specified
+   * with <code>null</code> values should be removed.
+   * @return a {@link Dataset} with the <code>null</code> values removed, for the specified
    * columns.
    */
   @Doc("Removes all rows with a null value in at least one of the columns specified")
@@ -61,23 +61,23 @@ public class Filters {
   }
   
   /**
-   * Applies the given replacement function to the array of the specified column. The
+   * Applies the given replacement function to the values of the specified column. The
    * function takes the given value of a column row as input, and returns the replacement value.
    * <p>
-   * The new array must all be of the same data type (which also must be provided to this method).
+   * The new values must all be of the same data type (which also must be provided to this method).
    * That data type will be assigned to the column that's been processed, in the returned
    * dataset.
    * 
    * @param dataset the {@link Dataset} to process.
-   * @param datatype the {@link Datatype} of the new array.
+   * @param datatype the {@link Datatype} of the new values.
    * @param function the {@link ArgFunction} instance to call for performing the replacement.
-   * @return a new {@link Dataset}, with the relevant array replaced.
+   * @return a new {@link Dataset}, with the relevant values replaced.
    */
-  @Doc("Applies the given replacement function to the array of the specified column")
+  @Doc("Applies the given replacement function to the values of the specified column")
   public static Dataset replace(      
       @Doc("a dataset") Dataset dataset, 
       @Doc("an array holding the name(s) of the column(s) to process") String[] colNames,
-      @Doc("the datatype of the new array in the processed column") Datatype datatype,
+      @Doc("the datatype of the new value in the processed column") Datatype datatype,
       @Doc("the replacement function to use") ArgFunction<Value, Value> function) {
     
     List<Vector> newRows = new ArrayList<>();
@@ -114,13 +114,13 @@ public class Filters {
   
   /**
    * @param dataset a dataset for which to convert certain columns to nominals.
-   * @param columnNames the array of column names from.
+   * @param columnNames the values of column names from.
    * @return the {@link Dataset}.
    */
-  @Doc("Transform the array in the given columns to nominal array")
+  @Doc("Transform the values in the given columns to nominal values")
   public static Dataset replaceWithNominal(
       @Doc("the dataset to process") Dataset dataset, 
-      @Doc("the names of the columns whose array should be converted to nominal array") String...columnNames) {
+      @Doc("the names of the columns whose values should be converted to nominal values") String...columnNames) {
     
     List<Datatype> datatypes = Data.list(dataset.getColumnSet().getColumnTypes(columnNames));
     Checks.isTrue(
@@ -131,7 +131,7 @@ public class Filters {
     
     MultiMap<String, Value> nominalsByColumn = SetMultiMap.createTreeSetMultiMap();
     
-    // extracting set of all array for each column
+    // extracting set of all values for each column
     for (Vector r : dataset) {
       for (String n : columnNames) {
         Column c     = dataset.getColumnSet().get(n);
@@ -178,12 +178,12 @@ public class Filters {
   }
   
   /**
-   * Removes <code>null</code> array from the given dataset, for the specified columns.
+   * Removes <code>null</code> values from the given dataset, for the specified columns.
    * 
    * @param dataset the {@link Dataset} to filter.
-   * @param columnNames the array of column names of the columns whose corresponding rows 
-   * with <code>null</code> array should be removed.
-   * @return a {@link Dataset} with the <code>null</code> array removed, for the specified
+   * @param columnNames the values of column names of the columns whose corresponding rows
+   * with <code>null</code> values should be removed.
+   * @return a {@link Dataset} with the <code>null</code> values removed, for the specified
    * columns.
    */
   @Doc("Removes all rows with a null value in at least one of the columns specified")
@@ -194,10 +194,10 @@ public class Filters {
   }
   
   /**
-   * Removes <code>null</code> array from the given dataset, for any column.
+   * Removes <code>null</code> values from the given dataset, for any column.
    * 
    * @param dataset the {@link Dataset} to filter.
-   * @return a dataset, with any row having <code>null</code> array filtered out.
+   * @return a dataset, with any row having <code>null</code> values filtered out.
    */
   @Doc("Removes all rows with at least one null, in any column")
   public static Dataset removeAnyNulls(Dataset dataset) {

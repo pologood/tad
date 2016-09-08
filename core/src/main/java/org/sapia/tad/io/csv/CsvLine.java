@@ -19,7 +19,7 @@ public class CsvLine implements Line {
     Checks.bounds(
         index, 
         line, 
-        "Invalid index %s. Got %s array in line: %s",
+        "Invalid index %s. Got %s values in line: %s",
         index, 
         line.length, 
         Strings.toString(line, new ArgFunction<String, String>() {

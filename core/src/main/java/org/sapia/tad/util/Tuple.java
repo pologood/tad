@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * An instance of this class holds array in predefined field slots, addressed by index.
+ * An instance of this class holds values in predefined field slots, addressed by index.
  * 
  * @author yduchesne
  *
@@ -17,14 +17,14 @@ public class Tuple implements Iterable<Object> {
   private Object[] values;
   
   /**
-   * @param values the array that this instance should hold.
+   * @param values the values that this instance should hold.
    */
   public Tuple(Object...values) {
     this.values = values;
   }
   
   /**
-   * @param values the array that this instance should hold.
+   * @param values the values that this instance should hold.
    */
   public Tuple(List<Object> values) {
     this(values.toArray(new Object[values.size()]));
@@ -92,7 +92,7 @@ public class Tuple implements Iterable<Object> {
       if (v != null && type.isAssignableFrom(v.getClass())) {
         Checks.isTrue(
             value == null, 
-            "Ambiguous type: %s. More than one array of that type found %s",
+            "Ambiguous type: %s. More than one values of that type found %s",
             type.getName(),
             Strings.toString(
                 values, 

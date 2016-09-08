@@ -13,7 +13,7 @@ public interface Column {
   
   /**
    * @return this instance {@link NominalSet} - which will be empty if this instance does not support
-   * nominal array.
+   * nominal values.
    */
  public NominalSet getNominalValues();
   

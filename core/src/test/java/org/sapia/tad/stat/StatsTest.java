@@ -53,7 +53,7 @@ public class StatsTest {
   }
 
   private Vector vector() {
-    return Vectors.vector(10 + rand.nextInt(100), 10 + rand.nextInt(100), 10 + rand.nextInt(100), 10 + rand.nextInt(100));
+    return Vectors.withNumbers(10 + rand.nextInt(100), 10 + rand.nextInt(100), 10 + rand.nextInt(100), 10 + rand.nextInt(100));
   }
 
   private Value min(Dataset subset) {

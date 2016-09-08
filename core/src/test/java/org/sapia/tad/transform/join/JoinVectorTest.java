@@ -17,8 +17,8 @@ public class JoinVectorTest {
 
   @Before
   public void setUp() {
-    left  = Vectors.vector(0, 1, 2);
-    right = Vectors.vector(3, 4);
+    left  = Vectors.withNumbers(0, 1, 2);
+    right = Vectors.withNumbers(3, 4);
     join = new JoinVector(
         new VectorTable(
             new int[] {0, 1, 2, 0, 1}, 

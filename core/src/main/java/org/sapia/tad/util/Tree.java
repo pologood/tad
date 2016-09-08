@@ -12,7 +12,7 @@ import java.util.Map;
  * @author yduchesne
  *
  * @param <K> the generic type for tree keys.
- * @param <V> the generic type for tree array.
+ * @param <V> the generic type for tree values.
  */
 public class Tree<K, V> {
 

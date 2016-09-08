@@ -16,7 +16,7 @@ public class ViewVectorTest {
   
   @Before
   public void setUp() {
-    Vector delegate = Vectors.vector(0, 1, 2, 3, 4);
+    Vector delegate = Vectors.withNumbers(0, 1, 2, 3, 4);
     vector = new ViewVector(new int[] {0, 2, 4}, delegate);
   }
 

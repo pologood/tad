@@ -41,7 +41,7 @@ public class Help {
   /**
    * @param clazz the {@link Class} for which to display method help.
    * @param methodName the method name, or part of its name, to use as a matcher.
-   * @param argsMatchers the array of matcher strings to test against method parameter type names.
+   * @param argsMatchers the values of matcher strings to test against method parameter type names.
    * @return the help string.
    */
   @Doc("Returns help about one or more methods of a class (provided they match the given method name and argument type patterns)")
@@ -52,7 +52,7 @@ public class Help {
   /**
    * @param clazz the {@link Class} for which to display method help.
    * @param methodName the method name, or part of its name, to use as a matcher.
-   * @param argsMatchers the array of matcher strings to test against method parameter type names.
+   * @param argsMatchers the values of matcher strings to test against method parameter type names.
    * @return the help string.
    */
   @Doc("Returns help about one or more methods of a class (provided they match the given method name and argument type patterns)")
@@ -175,7 +175,7 @@ public class Help {
   }
   
   /**
-   * @param toFilter the array of methods to filter.
+   * @param toFilter the values of methods to filter.
    * @param criterion the {@link ArgFunction} serving as criterion.
    * @return the {@link List} of methods that were "accepted" by the given function.
    */
@@ -206,7 +206,7 @@ public class Help {
   }
   
   /**
-   * @param args an array of {@link Class} instances corresponding to the method parameter
+   * @param args an values of {@link Class} instances corresponding to the method parameter
    * types to be matched.
    * @param matchers the {@link List} of matcher strings to use for matching.
    * @return <code>true</code> if any of the given argument types is matched by 

@@ -109,7 +109,7 @@ public class Datasets {
      * @return this instance.
      */
     public DatasetBuilder row(Vector row) {
-      Checks.isTrue(row.size() == columns.size(), "Invalid row length: got %s array, but dataset has %s columns", row.size(), columns.size());
+      Checks.isTrue(row.size() == columns.size(), "Invalid row length: got %s values, but dataset has %s columns", row.size(), columns.size());
       
       for (int i = 0; i < row.size(); i++) {
         Checks.isTrue(
@@ -160,8 +160,8 @@ public class Datasets {
   
   /**
    * @param columns a {@link ColumnSet}
-   * @param arraysOfVectorValues an array of other arrays that correspond
-   * to vector array.
+   * @param arraysOfVectorValues an values of other arrays that correspond
+   * to vector values.
    * @return a new {@link Dataset}.
    */
   @Hide

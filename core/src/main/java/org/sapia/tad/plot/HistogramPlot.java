@@ -3,7 +3,7 @@ package org.sapia.tad.plot;
 public interface HistogramPlot extends Plot {
 
   /**
-   * @param column the name of the column whose array should be used.
+   * @param column the name of the column whose values should be used.
    */
   public void setColumn(String column);
 

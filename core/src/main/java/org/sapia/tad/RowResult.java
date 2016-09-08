@@ -5,7 +5,7 @@ import org.sapia.tad.value.Value;
 /**
  * Abstracts a given row in either a {@link RowSet} or a {@link Dataset}.
  * Meant to provide an abstraction on top of the {@link Vector} interface, allowing
- * the lookup of array by column name.
+ * the lookup of values by column name.
  * 
  * @author yduchesne
  *

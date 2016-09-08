@@ -119,7 +119,7 @@ public class DefaultIndexTest {
 
   @Test
   public void testGetRowSetByKeyForSingleIndex() {
-    RowSet result = singleIndex.getRowSet(Data.array("col1"), Values.array("00"));
+    RowSet result = singleIndex.getRowSet(Data.array("col1"), Values.with("00"));
     RowSet expected = new DefaultRowSet(
         Data.list(
           (Vector) new DefaultVector("00", "00", "00", "00"),
@@ -138,7 +138,7 @@ public class DefaultIndexTest {
   
   @Test
   public void testGetRowSetByKeyForMultiIndex() {
-    RowSet result   = multiIndex.getRowSet(Data.array("col1", "col2"), Values.array("00", "01"));
+    RowSet result   = multiIndex.getRowSet(Data.array("col1", "col2"), Values.with("00", "01"));
     RowSet expected = new DefaultRowSet(
         Data.list(
             new DefaultVector("00", "00", "01", "00"),

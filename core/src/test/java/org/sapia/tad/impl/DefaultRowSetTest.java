@@ -20,9 +20,9 @@ public class DefaultRowSetTest {
   public void setUp() {
     rowset = new DefaultRowSet(
         Data.list(
-          (Vector) new DefaultVector(Values.array(0)),
-          (Vector) new DefaultVector(Values.array(1)),
-          (Vector) new DefaultVector(Values.array(2))
+          (Vector) new DefaultVector(Values.with(0)),
+          (Vector) new DefaultVector(Values.with(1)),
+          (Vector) new DefaultVector(Values.with(2))
       )
     );
   }

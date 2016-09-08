@@ -29,7 +29,7 @@ public class RangesTest {
     for (int i = 0; i < 10; i++) {
       int v1 = i + 1;
       int v2 = (i + 1) * 10; 
-      rows.add(Vectors.vector("s" + v1, v1, "s" + v2, v2));
+      rows.add(Vectors.with("s" + v1, v1, "s" + v2, v2));
     }
     dataset = new DefaultDataset(columns, rows);
   }

@@ -21,13 +21,13 @@ public class Main  {
           "category", Datatype.STRING
         ), 
         Data.list(
-            Vectors.vector(3, "silver"),
-            Vectors.vector(2, "bronze"),
-            Vectors.vector(3, "silver"),
-            Vectors.vector(4, "gold"),
-            Vectors.vector(2, "bronze"),
-            Vectors.vector(2, "bronze"),
-            Vectors.vector(5, "diamond")
+            Vectors.with(3, "silver"),
+            Vectors.with(2, "bronze"),
+            Vectors.with(3, "silver"),
+            Vectors.with(4, "gold"),
+            Vectors.with(2, "bronze"),
+            Vectors.with(2, "bronze"),
+            Vectors.with(5, "diamond")
         )
         
     );

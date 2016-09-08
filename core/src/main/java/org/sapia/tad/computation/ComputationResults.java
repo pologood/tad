@@ -108,7 +108,7 @@ public class ComputationResults {
   /**
    * Returns a dataset holding this results for this instance's corresponding computations.
    * <p>
-   * Each row in the dataset will hold the result of a computation, for each column array in that row.
+   * Each row in the dataset will hold the result of a computation, for each column values in that row.
    * 
    * @return a Dataset holding this instance's results.
    */
