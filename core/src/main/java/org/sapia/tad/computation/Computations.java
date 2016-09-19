@@ -19,13 +19,12 @@ public class Computations {
    * Returns a task that executes its registered computations in parallel.
    * 
    * @param executor the {@link ExecutorService} to be used by the returned task.
-   * @param timeout the timeout value corresponding to the maximum amount of the 
    * time given to perform all the task's computations.
    * 
    * @return a new {@link ComputationTask}.
    */
-  public static ComputationTask parallel(ExecutorService executor, Time timeout) {
-    return new ConcurrentComputationTask(executor, timeout);
+  public static ComputationTask parallel(ExecutorService executor) {
+    return new ConcurrentComputationTask(executor);
   }
   
   /**

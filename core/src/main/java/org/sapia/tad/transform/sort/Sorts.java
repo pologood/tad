@@ -1,6 +1,7 @@
 package org.sapia.tad.transform.sort;
 
 import org.sapia.tad.Dataset;
+import org.sapia.tad.TadContext;
 import org.sapia.tad.Vector;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DefaultDataset;
@@ -18,8 +19,11 @@ import java.util.List;
  */
 @Doc("Provides methods pertaining to sorting (in ascending and descending order)")
 public class Sorts {
-  
-  private Sorts() {
+
+  private TadContext context;
+
+  public Sorts(TadContext context) {
+    this.context = context;
   }
   
   /**
@@ -32,7 +36,7 @@ public class Sorts {
    * in the desired sort order.
    */  
   @Doc("Sorts the given dataset in ascending order, on the given columns (returns a new sorted dataset)")
-  public static Dataset asc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") List<String> colNames) {
+  public Dataset asc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") List<String> colNames) {
     return asc(toSort, colNames.toArray(new String[colNames.size()]));
   }
 
@@ -46,7 +50,7 @@ public class Sorts {
    * in the desired sort order.
    */
   @Doc("Sorts the given dataset in ascending order, on the given columns (returns a new sorted dataset)")
-  public static Dataset asc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") String...colNames) {
+  public Dataset asc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") String...colNames) {
     List<Vector> rows = new ArrayList<>();
     for (Vector row : toSort) {
       rows.add(row);
@@ -65,7 +69,7 @@ public class Sorts {
    * in the desired sort order.
    */
   @Doc("Sorts the given dataset in descending order, on the given columns (returns a new sorted dataset)")
-  public static Dataset desc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") List<String> colNames) {
+  public Dataset desc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") List<String> colNames) {
     return desc(toSort, colNames.toArray(new String[colNames.size()]));
   }
   
@@ -79,7 +83,7 @@ public class Sorts {
    * in the desired sort order.
    */
   @Doc("Sorts the given dataset in descending order, on the given columns (returns a new sorted dataset)")
-  public static Dataset desc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") String...colNames) {
+  public Dataset desc(@Doc("a dataset") Dataset toSort, @Doc("the names of the columns on which to sort") String...colNames) {
     List<Vector> rows = new ArrayList<>();
     for (Vector row : toSort) {
       rows.add(row);

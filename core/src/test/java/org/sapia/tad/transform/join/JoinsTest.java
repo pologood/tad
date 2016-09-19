@@ -8,9 +8,13 @@ import org.sapia.tad.util.Data;
 public class JoinsTest {
   
   private Dataset left, right;
+
+  private Tad tad;
   
   @Before
   public void setUp() {
+    tad = TestTad.get();
+
     left = Datasets.dataset(
         ColumnSets.columnSet(
             "col0", Datatype.STRING, 
@@ -48,7 +52,7 @@ public class JoinsTest {
         left.getColumnSet().includes("fkey0", "fkey1"), 
         right.getColumnSet().includes("key0", "key1")
     );
-    Dataset joined = Joins.join(left, right, join);
+    Dataset joined = tad.xf.joins.join(left, right, join);
     System.out.println(Datasets.toString(joined));
   }
 

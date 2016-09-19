@@ -14,7 +14,7 @@ public interface ComputationTask {
   /**
    * @param computation a {@link Computation} to register with this task.
    */
-  public void add(Computation computation);
+  public ComputationTask add(Computation computation);
   
   /**
    * Executes the {@link Computation}s added to this instance. The provided {@link ColumnSet}

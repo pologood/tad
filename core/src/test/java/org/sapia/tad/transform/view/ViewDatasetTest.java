@@ -17,9 +17,14 @@ import static org.junit.Assert.assertEquals;
 public class ViewDatasetTest {
   
   private Dataset view;
+  private Tad tad;
+  private Views views;
   
   @Before
   public void setUp() {
+    tad = TestTad.get();
+    views = new Views(tad.context);
+
     List<Column> columns = new ArrayList<>();
     for (int i = 0; i < 5; i++) {
       columns.add(new DefaultColumn(i, Datatype.STRING, "col" + i));
@@ -32,7 +37,7 @@ public class ViewDatasetTest {
     
     Dataset delegate = new DefaultDataset(columns, rows);
     
-    view = Views.include(delegate, "col0", "col2", "col4");
+    view = views.include(delegate, "col0", "col2", "col4");
   }
 
   @Test

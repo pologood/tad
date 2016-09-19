@@ -4,6 +4,7 @@ package org.sapia.tad.transform.formula;
 import org.sapia.tad.Column;
 import org.sapia.tad.Dataset;
 import org.sapia.tad.Datatype;
+import org.sapia.tad.TadContext;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DefaultColumn;
 import org.sapia.tad.impl.DefaultColumnSet;
@@ -17,8 +18,11 @@ import java.util.List;
  * The formulas to hold.
  */
 public class Formulas {
-  
-  private Formulas() {
+
+  private TadContext context;
+
+  public Formulas(TadContext context) {
+    this.context = context;
   }
 
   /**
@@ -29,7 +33,7 @@ public class Formulas {
    * @return a new {@link Dataset}, with new columns added for the given formulas.
    */
   @Doc("returns a dataset that adds the given formulas to the provided dataset")
-  public static Dataset addFormulas(
+  public Dataset addFormulas(
       @Doc("a dataset to which to add formulas") Dataset dataset, 
       @Doc("one or more tuples, each holding: " + 
        "a) a formula column name; b) a formula column type; " + 
@@ -46,7 +50,7 @@ public class Formulas {
    */
   @SuppressWarnings("unchecked")
   @Doc("returns a dataset that adds the given formulas to the provided dataset")
-  public static Dataset addFormulas(
+  public Dataset addFormulas(
       @Doc("a dataset to which to add formulas") Dataset dataset, 
       @Doc("one or more tuples, each holding: " + 
           "a) a formula column name; b) a formula column type; " + 

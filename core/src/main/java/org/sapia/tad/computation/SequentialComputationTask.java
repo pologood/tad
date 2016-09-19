@@ -15,8 +15,9 @@ public class SequentialComputationTask implements ComputationTask {
   private CompositeComputation computation = new CompositeComputation();
   
   @Override
-  public void add(Computation computation) {
+  public ComputationTask add(Computation computation) {
     this.computation.add(computation);
+    return this;
   }
   
   @Override

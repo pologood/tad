@@ -33,7 +33,7 @@ class MergedColumnsDataset implements Dataset {
   
   // --------------------------------------------------------------------------
   
-  private class InternalVector implements Vector {
+  private class InternalVector extends VectorImpl {
     
     private int rowIndex;
         
@@ -48,50 +48,8 @@ class MergedColumnsDataset implements Dataset {
     }
     
     @Override
-    public Iterator<Value> iterator() {
-      List<Iterator<Value>> iterators = new ArrayList<>();
-      for (Dataset ds : datasets) {
-        iterators.add(ds.getRow(rowIndex).iterator());
-      }
-      return new CompositeIterator<Value>(iterators.iterator());
-    }
-    
-    @Override
     public int size() {
       return columnSet.size();
-    }
-    
-    @Override
-    public Vector subset(int... indices) throws IllegalArgumentException {
-      Value[] values = new Value[indices.length];
-      for (int i = 0; i < values.length; i++) {
-        values[i] = get(indices[i]);
-      }
-      return new DefaultVector(values);
-    }
-
-    @Override
-    public double product(Vector other) {
-      return Vectors.product(this, other);
-    }
-
-    @Override
-    public Vector sum(Vector other) {
-      return Vectors.sum(this, other);
-    }
-
-    @Override
-    public double norm() {
-      return Vectors.norm(this);
-    }
-
-    @Override
-    public Value[] toArray() {
-      Value[] values = new Value[size()];
-      for (int i = 0; i < values.length; i++) {
-        values[i] = get(i);
-      }
-     return values;
     }
   }
   

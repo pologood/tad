@@ -3,6 +3,7 @@ package org.sapia.tad.transform.join;
 import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
 import org.sapia.tad.impl.DefaultVector;
+import org.sapia.tad.impl.VectorImpl;
 import org.sapia.tad.transform.join.VectorTable.VectorType;
 import org.sapia.tad.value.Value;
 
@@ -15,7 +16,7 @@ import java.util.NoSuchElementException;
  * @author yduchesne
  *
  */
-class JoinVector implements Vector {
+class JoinVector extends VectorImpl {
 
   private VectorTable  table;
   private Vector left, right;
@@ -36,68 +37,10 @@ class JoinVector implements Vector {
       return right.get(table.resolveVectorIndex(index));
     }
   }
-  
-  @Override
-  public Iterator<Value> iterator() {
-    return new Iterator<Value>() {
-      private int index;
-      @Override
-      public boolean hasNext() {
-        return index < totalSize;
-      }
-      
-      @Override
-      public Value next() {
-        if (index >= totalSize) {
-          throw new NoSuchElementException();
-        }
-        return get(index++);
-      }
-      
-      @Override
-      public void remove() {
-      }
-    };
-  }
-  
+
   @Override
   public int size() {
     return totalSize;
   }
-  
-  @Override
-  public Vector subset(int... indices) throws IllegalArgumentException {
-    Value[] values = new Value[indices.length];
-    for (int i = 0; i < indices.length; i++) {
-      int index = indices[i];
-      Value value = get(index);
-      values[i] = value;
-    }
-    return new DefaultVector(values);
-  }
 
-  @Override
-  public double product(Vector other) {
-    return Vectors.product(this, other);
-  }
-
-  @Override
-  public Vector sum(Vector other) {
-    return Vectors.sum(this, other);
-  }
-
-  @Override
-  public double norm() {
-    return Vectors.norm(this);
-  }
-
-  @Override
-  public Value[] toArray() {
-    Value[] values = new Value[totalSize];
-    for (int i = 0; i < totalSize; i++) {
-      Value value = get(i);
-      values[i] = value;
-    }
-    return values;
-  }
 }

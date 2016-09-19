@@ -1,7 +1,6 @@
 package org.sapia.tad.ml.error;
 
 import org.sapia.tad.Vector;
-import org.sapia.tad.Vectors;
 import org.sapia.tad.util.Checks;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
@@ -32,6 +31,10 @@ public class SseCumulativeError implements CumulativeError {
 
   @Override
   public double get() {
-    return Vectors.withNumbers(total).norm();
+    double error = 0;
+    for(int i = 0; i < total.length; i++) {
+      error += total[i];
+    }
+    return error;
   }
 }

@@ -56,8 +56,8 @@ public class Objects {
     if (obj == null) {
       return hashCode;
     }
-    for (Object o : obj) {
-      hashCode += safeHashCode(o) * PRIME;
+    for (int i = 0; i < obj.length; i++) {
+      hashCode += safeHashCode(obj[i]) * PRIME;
     }
     return hashCode;
   }
@@ -66,7 +66,7 @@ public class Objects {
    * Computes a "compounded" hash code, for a whole collection of objects.
    * Safely handles <code>null</code>s.
    * 
-   * @param obj one or more object for which to compute a hash code.
+   * @param items one or more object for which to compute a hash code.
    * @return the hash code that was computed.
    */
   public static int safeHashCode(Collection<?> items) {
@@ -84,7 +84,7 @@ public class Objects {
    * Computes a "compounded" hash code, for a whole iterator of objects.
    * Safely handles <code>null</code>s.
    * 
-   * @param obj one or more object for which to compute a hash code.
+   * @param items one or more object for which to compute a hash code.
    * @return the hash code that was computed.
    */
   public static int safeHashCode(Iterator<?> items) {
@@ -97,6 +97,17 @@ public class Objects {
       hashCode += safeHashCode(i) * PRIME;
     }
     return hashCode;
+  }
+
+  /**
+   * Computes a "compounded" hash code, for a whole iterator of objects.
+   * Safely handles <code>null</code>s.
+   *
+   * @param items one or more object for which to compute a hash code.
+   * @return the hash code that was computed.
+   */
+  public static int safeHashCode(Iterable<?> items) {
+    return safeHashCode(items.iterator());
   }
 
 }

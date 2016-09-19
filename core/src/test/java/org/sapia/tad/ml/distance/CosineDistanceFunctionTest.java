@@ -22,7 +22,7 @@ public class CosineDistanceFunctionTest {
     Vector v2 = Vectors.withNumbers(4, 5, 6);
 
     double distance = func.computeDistanceBetween(v1, v2);
-    double expected = v1.product(v2) / (v1.norm() * v2.norm());
+    double expected = v1.innerProduct(v2) / (v1.norm() * v2.norm());
 
     assertEquals(expected, distance, 0);
   }

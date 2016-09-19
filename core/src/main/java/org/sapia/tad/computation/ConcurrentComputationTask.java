@@ -20,22 +20,18 @@ public class ConcurrentComputationTask implements ComputationTask {
   
   private ExecutorService   executor;
   private List<Computation> computations = new ArrayList<>();
-  private Time              timeout;
-  
+
   /**
    * @param executor the {@link ExecutorService} to use to perform the computations.
-   * @param timeout the {@link Time} to wait until task completion - a {@link ConcurrencyException}
-   * is thrown if a computation could not complete within the allowed time.
    */
-  public ConcurrentComputationTask(ExecutorService executor, Time timeout) {
+  public ConcurrentComputationTask(ExecutorService executor) {
     this.executor = executor;
-    this.timeout  = timeout;
   }
   
   @Override
-  public void add(Computation computation) {
+  public ComputationTask add(Computation computation) {
     computations.add(computation);
-    
+    return this;
   }
   
   @Override
@@ -47,11 +43,9 @@ public class ConcurrentComputationTask implements ComputationTask {
     ComputationResults aggregated = ComputationResults.newInstance(columns);
     for (Future<ComputationResults> futureResults : resultsList) {
       try {
-        aggregated.mergeWith(futureResults.get(timeout.getValue(), timeout.getUnit()));
+        aggregated.mergeWith(futureResults.get());
       } catch (ExecutionException e) {
         throw new ConcurrencyException("Error occured awaiting computation result", e);
-      } catch (TimeoutException e) {
-        throw new ConcurrencyException("Timeout awaiting computation result", e);
       }
     }    
     return aggregated;

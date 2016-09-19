@@ -30,7 +30,10 @@ import java.util.*;
 @Doc("Provides methods for filtering data")
 public class Filters {
 
-  private Filters() {
+  private TadContext context;
+
+  public Filters(TadContext context) {
+    this.context = context;
   }
   
   /**
@@ -43,7 +46,7 @@ public class Filters {
    * columns.
    */
   @Doc("Removes all rows with a null value in at least one of the columns specified")
-  public static Dataset removeNulls(
+  public Dataset removeNulls(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the name of the columns to check for null") List<String> columnNames) {
     final Set<String> nameSet = new HashSet<>(columnNames);
@@ -74,7 +77,7 @@ public class Filters {
    * @return a new {@link Dataset}, with the relevant values replaced.
    */
   @Doc("Applies the given replacement function to the values of the specified column")
-  public static Dataset replace(      
+  public Dataset replace(
       @Doc("a dataset") Dataset dataset, 
       @Doc("an array holding the name(s) of the column(s) to process") String[] colNames,
       @Doc("the datatype of the new value in the processed column") Datatype datatype,
@@ -118,7 +121,7 @@ public class Filters {
    * @return the {@link Dataset}.
    */
   @Doc("Transform the values in the given columns to nominal values")
-  public static Dataset replaceWithNominal(
+  public Dataset replaceWithNominal(
       @Doc("the dataset to process") Dataset dataset, 
       @Doc("the names of the columns whose values should be converted to nominal values") String...columnNames) {
     
@@ -187,7 +190,7 @@ public class Filters {
    * columns.
    */
   @Doc("Removes all rows with a null value in at least one of the columns specified")
-  public static Dataset removeNulls(
+  public Dataset removeNulls(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the name of the columns to check for null") String...columnNames) {
     return removeNulls(dataset, Arrays.asList(columnNames));
@@ -200,7 +203,7 @@ public class Filters {
    * @return a dataset, with any row having <code>null</code> values filtered out.
    */
   @Doc("Removes all rows with at least one null, in any column")
-  public static Dataset removeAnyNulls(Dataset dataset) {
+  public Dataset removeAnyNulls(Dataset dataset) {
     return removeNulls(dataset, dataset.getColumnSet().getColumnNames());
   }
   
@@ -212,7 +215,7 @@ public class Filters {
    * @return a new {@link Dataset}, with the desired number of rows removed.
    */
   @Doc("Removes the given number of rows from the head of the dataset")
-  public static Dataset removeHead(
+  public Dataset removeHead(
       @Doc("a dataset") Dataset dataset, 
       @Doc("number of rows") int numberOfRows) {
     return Slices.slice(dataset, numberOfRows, dataset.size());
@@ -226,7 +229,7 @@ public class Filters {
    * @return a new {@link Dataset}, with the desired number of rows removed.
    */
   @Doc("Removes the given number of rows from the tail of the dataset")
-  public static Dataset removeTail(
+  public Dataset removeTail(
       @Doc("a dataset") Dataset dataset, 
       @Doc("number of rows") int numberOfRows) {
     return Slices.slice(dataset, 0, dataset.size() - numberOfRows);
@@ -240,7 +243,7 @@ public class Filters {
    * @return a new {@link Dataset}, with the top removed.
    */
   @Doc("Removes a percentage of the data in the given dataset from the top of it")  
-  public static Dataset removeTop(
+  public Dataset removeTop(
     @Doc("a dataset") Dataset dataset, 
     @Doc("a percentage") double percentage) {
     Checks.isTrue(percentage >= 0 && percentage <= 1, "Percentage must be between 0 and 1, inclusively. Got: %s", percentage);
@@ -256,7 +259,7 @@ public class Filters {
    * @return a new {@link Dataset}, with the bottom removed.
    */
   @Doc("Removes a percentage of the data in the given dataset from the bottom of it")
-  public static Dataset removeBottom(
+  public Dataset removeBottom(
     @Doc("a dataset") Dataset dataset, 
     @Doc("a percentage") double percentage) {
     Checks.isTrue(percentage >= 0 && percentage <= 1, "Percentage must be between 0 and 1, inclusively. Got: %s", percentage);
@@ -273,7 +276,7 @@ public class Filters {
        examples=  {
          @Example(caption = "Selecting all that is greated than a given value", content = "salary >= 1000" )
        })
-  public static Dataset select(
+  public Dataset select(
     @Doc("a dataset from which to select a subset of data") final Dataset dataset, 
     @Doc("a filter expression") final String expression) {
     

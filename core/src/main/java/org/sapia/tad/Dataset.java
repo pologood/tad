@@ -11,12 +11,12 @@ public interface Dataset extends Iterable<Vector> {
    * @return this instance's {@link ColumnSet}.
    */
   public ColumnSet getColumnSet();
-  
+
   /**
    * @return the number of rowns in this dataset.
    */
   public int size();
-  
+
   /**
    * @param rowIndex the index of the row to return.
    * @return the {@link Vector} at the given row index.

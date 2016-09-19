@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class DefaultRowSet implements RowSet {
   
-  private List<Vector> rows;
+  protected List<Vector> rows;
   
   public DefaultRowSet(List<Vector> rows) {
     this.rows = rows;

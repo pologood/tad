@@ -36,17 +36,35 @@ public interface Vector extends Iterable<Value> {
   public Value[] toArray();
 
   /**
+   * @return the norm of this vector.
+   */
+  public double norm();
+
+  /**
+   * @return the sum of this instance's values.
+   */
+  public double sum();
+
+  /**
    * Computes the inner product with another vector. This method will treat non-numeric values as 0.
    *
    * @param other another {@link Vector}
    * @return the scalar value corresponding to the inner product of this instance with the given vector.
    */
-  public double product(Vector other);
+  public double innerProduct(Vector other);
 
   /**
-   * @return the norm of this vector.
+   * Computes the product of this with another vector. This method will treat non-numeric values as 0.
+   * <p>
+   * DO NOT mistaken this operation with the inner product: this method will do a multiplication of each corresponding
+   * values in this vector and the vector provided as input, returning these values in a new vector.
+   * </p>
+   *
+   * @param other another {@link Vector}
+   * @return a new {@link Vector}, with each column holding the product of the corresponding values
+   * in this instance with the corresponding ones the given vector.
    */
-  public double norm();
+  public Vector product(Vector other);
 
   /**
    * Performs the sum of this instance and a given vector. This method will treat non-numeric values as 0.
@@ -56,4 +74,47 @@ public interface Vector extends Iterable<Value> {
    * in this instance, and the given vector.
    */
   public Vector sum(Vector other);
+
+  /**
+   * Calculates the difference between this instance and a given vector. This method will treat non-numeric values
+   * as 0.
+   *
+   * @param other another {@link Vector}
+   * @return a new {@link Vector}, with each column holding the difference of the corresponding values
+   * in this instance, and the given vector.
+   */
+  public Vector difference(Vector other);
+
+  /**
+   * Computes the scalar product of the this vector and the given value.
+   *
+   * @param value the {@link Value} with which to compute the given product.
+   * @return a new {@link Vector}, holding the results of the computation.
+   */
+  public Vector product(Value value);
+
+  /**
+   * Computes the element-wise sum of this vector and the given value.
+   *
+   * @param value the {@link Value} with which to compute the given sum.
+   * @return a new {@link Vector}, holding the results of the computation.
+   */
+  public Vector sum(Value value);
+
+  /**
+   * Computes the element-wise difference of this vector and the given value.
+   *
+   * @param value the {@link Value} with which to compute the given difference.
+   * @return a new {@link Vector}, holding the results of the computation.
+   */
+  public Vector difference(Value value);
+
+  /**
+   *  Raises this instance's values to the given power.
+   *
+   * @param power a power to raise this instance's values to.
+   * @return a new {@link Vector}, holding the results of this operation.
+   */
+  public Vector pow(double power);
+
 }

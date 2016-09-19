@@ -8,9 +8,13 @@ import org.sapia.tad.util.Data;
 public class PivotsTest {
   
   private Dataset multiLevel, singleLevel;
+
+  private Tad tad;
   
   @Before
   public void setUp() {
+    tad = TestTad.get();
+
     multiLevel = Datasets.dataset(
         ColumnSets.columnSet("country", Datatype.STRING, "gdp", Datatype.NUMERIC, "year", Datatype.NUMERIC),
         Data.list(
@@ -40,7 +44,7 @@ public class PivotsTest {
 
   @Test
   public void testPivot() {
-    System.out.println(Pivots.pivot(multiLevel, "year", "country", "gdp"));
+    System.out.println(tad.xf.pivots.pivot(multiLevel, "year", "country", "gdp"));
   }
 
 }

@@ -68,10 +68,10 @@ public class VectorsTest {
   }
 
   @Test
-  public void testProduct() {
+  public void testInnerProduct() {
     Vector otherVector = Vectors.withNumbers(4, 5, 6, 7);
-    double product = vector.product(otherVector);
-    assertEquals(0 * 4 + 1 * 5 + 2 * 6 + 3 *7, product, 0);
+    double product = vector.innerProduct(otherVector);
+    assertEquals(0 * 4 + 1 * 5 + 2 * 6 + 3 * 7, product, 0);
   }
 
   @Test

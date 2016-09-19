@@ -2,10 +2,10 @@ package org.sapia.tad.stat;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
-import org.sapia.tad.Vector;
-import org.sapia.tad.Vectors;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+import org.sapia.tad.*;
 import org.sapia.tad.impl.DefaultColumn;
 import org.sapia.tad.impl.DefaultDataset;
 import org.sapia.tad.util.Data;
@@ -15,12 +15,19 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class StatsTest {
+
+  @Mock
+  private TadContext context;
 
   private Random rand;
 
+  private Stats stats;
+
   @Before
   public void setUp() {
+    stats = new Stats(context);
     rand = new Random();
   }
 
@@ -36,7 +43,7 @@ public class StatsTest {
             Data.list(5, () -> vector())
     );
 
-    Dataset normalized = Stats.normalize(dataset);
+    Dataset normalized = stats.rangeNormalization(dataset);
 
     for (int i = 0; i < normalized.getColumnSet().size(); i++) {
       Dataset denormalizedSubset = dataset.getColumnSubset(i, v -> true);

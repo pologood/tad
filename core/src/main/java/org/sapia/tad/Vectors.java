@@ -2,6 +2,7 @@ package org.sapia.tad;
 
 import org.sapia.tad.impl.DefaultVector;
 import org.sapia.tad.util.Checks;
+import org.sapia.tad.value.NaN;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
 import org.sapia.tad.value.Values;
@@ -9,6 +10,8 @@ import org.sapia.tad.value.Values;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
+import java.util.function.Function;
 
 public class Vectors {
 
@@ -56,6 +59,21 @@ public class Vectors {
   }
 
   /**
+   * @param min the minimum random value that should be generated.
+   * @param max the maximum random value that should be generated.
+   * @param len the length of the vector that should be returned.
+   * @return a new {@link Vector}, fill with random integer (int) values.
+   */
+  public static Vector withRandomNumbers(int min, int max, int len) {
+    Random random = new Random();
+    int[] values = new int[len];
+    for (int i = 0; i < values.length; i++) {
+      values[i] = random.nextInt(max) + min;
+    }
+    return withNumbers(values);
+  }
+
+  /**
    * @param c the {@link Comparator} to use to sort the given vector's values.
    * @param toSort the {@link Vector} to sort.
    * @return a new {@link Vector}, with its values sorted.
@@ -67,56 +85,51 @@ public class Vectors {
   }
 
   /**
-   * Computes the inner product with another vector. This method will treat non-numeric values as 0.
+   * Returns a vector containing the negative values of the vector passed in: use this method in the context
+   * of matrix-vector subtraction (which is in fact a matrix-vector sum, involving the negative of the given vector).
    *
-   * @param v1 a {@link Vector}
-   * @param v2 another {@link Vector}
-   * @return the scalar value corresponding to the inner product of this instance with the given vector.
+   * @param v a {@link Vector}.
+   * @return a new {@link Vector}, holding the values that are the negative version of the values
+   * if the given vector.
    */
-  public static double product(Vector v1, Vector v2) {
-    Checks.isTrue(v1.size() == v2.size(), "Vectors do not have same length (%s vs %s)", v1.size(), v2.size());
-    double product = 0;
-    for (int i = 0; i < v1.size(); i++) {
-      Value thisValue = v1.get(i);
-      Value otherValue = v2.get(i);
-      if (thisValue.isNumeric() && otherValue.isNumeric()) {
-        product += thisValue.get() * otherValue.get();
+  public static Vector negative(Vector v) {
+    Value[] values = new Value[v.size()];
+    for (int i = 0; i < values.length; i++) {
+      Value val = v.get(i);
+      if (val.isNumeric()) {
+        values[i] = NumericValue.of(-val.get());
+      } else {
+        values[i] = val;
       }
     }
-    return product;
-  }
-  /**
-   * Performs the sum of a vector with another. This method will treat non-numeric values as 0.
-   *
-   * @param v1 a {@link Vector}
-   * @param v2 another {@link Vector}
-   * @return a new {@link Vector}, with each column holding the sum of the corresponding values
-   * in this instance, and the given vector.
-   */
-  public static Vector sum(Vector v1, Vector v2) {
-    Checks.isTrue(v1.size() == v2.size(), "Vectors do not have same length (%s vs %s)", v1.size(), v2.size());
-    Value[] sum = new Value[v1.size()];
-    for (int i = 0; i < v1.size(); i++) {
-      Value thisValue = v1.get(i);
-      Value otherValue = v2.get(i);
-      sum[i] = NumericValue.sum(thisValue, otherValue);
-    }
-    return new DefaultVector(sum);
+    return new DefaultVector(values);
   }
 
   /**
-   * @param v a {@link Vector} whose norm is to be computed.
-   * @return the norm of the given vector.
+   * Returns a vector containing the inverse of the values of the vector passed in: use this method in the context
+   * of matrix-vector division (which is in fact a matrix-vector multiplication, involving the inverse of the given vector).
+   *
+   * @param v a {@link Vector}.
+   * @return a new {@link Vector}, holding the values that are the negative version of the values
+   * if the given vector.
    */
-  public static double norm(Vector v) {
-    double total = 0;
-    for (int i = 0; i < v.size(); i++) {
+  public static Vector inverse(Vector v) {
+    Value[] values = new Value[v.size()];
+    for (int i = 0; i < values.length; i++) {
       Value val = v.get(i);
       if (val.isNumeric()) {
-        total += Math.pow(val.get(), 2);
+        if (val.get() < 0) {
+          values[i] = NaN.getInstance();
+        } else {
+          values[i] = NumericValue.of(1 / val.get());
+        }
+      } else if (val instanceof NaN) {
+        values[i] = val;
+      } else {
+        values[i] = val;
       }
     }
-    return Math.sqrt(total);
+    return new DefaultVector(values);
   }
 
 }

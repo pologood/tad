@@ -1,6 +1,7 @@
 package org.sapia.tad.transform.slice;
 
 import org.sapia.tad.Dataset;
+import org.sapia.tad.TadContext;
 import org.sapia.tad.conf.Conf;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.util.Checks;
@@ -23,7 +24,10 @@ public class Slices {
   
   private static final int QUINTILE_PORTION_COUNT = 5;
 
-  private Slices() {
+  private TadContext context;
+
+  public Slices(TadContext context) {
+    this.context = context;
   }
   
   /**
@@ -32,7 +36,7 @@ public class Slices {
    * @return the {@link Dataset} corresponding to the top N percent rows.
    */
   @Doc("Returns the top n percent of the rows in the given dataset, as a new dataset")
-  public static Dataset top(
+  public Dataset top(
       @Doc("the dataset to slice") Dataset dataset, 
       @Doc("a percentage (0.8, 0.95, etc.)") double percent) {
     Checks.isTrue(percent >= 0 && percent <= 1, "Percentage must be between 0 and 1, inclusively. Got: %s", percent);
@@ -46,7 +50,7 @@ public class Slices {
    * @return the {@link Dataset} corresponding to the bottom N percent rows.
    */
   @Doc("Returns the bottom n percent of the rows in the given dataset, as a new dataset")
-  public static Dataset bottom(
+  public Dataset bottom(
       @Doc("the dataset to slice") Dataset dataset, 
       @Doc("a percentage (0.8, 0.95, etc.)") double percent) {
     Checks.isTrue(percent >= 0 && percent <= 1, "Percentage must be between 0 and 1, inclusively. Got: %s", percent);
@@ -55,6 +59,8 @@ public class Slices {
   }
   
   /**
+   * Note: this method is static in order to act as a stateless utility.
+   *
    * @param dataset the {@link Dataset} whose head should be returned.
    * @return a new {@link Dataset}, holding the rows of the given dataset that correspond
    * to its head.
@@ -65,6 +71,8 @@ public class Slices {
   }
  
   /**
+   * Note: this method is static in order to act as a stateless utility.
+   *
    * @param dataset the {@link Dataset} whose head should be returned.
    * @return a new {@link Dataset}, holding the rows of the given dataset that correspond
    * to its tail.
@@ -75,6 +83,8 @@ public class Slices {
   }
   
   /**
+   * Note: this method is static in order to act as a stateless utility.
+   *
    * @param dataset a {@link Dataset} to slice.
    * @param start the row index at which to start slicing (inclusive).
    * @param end the row index at which to start slicing (exclusive).
@@ -97,7 +107,7 @@ public class Slices {
    * @return a new {@link Dataset}, corresponding to the desired quartile.
    */
   @Doc("Returns the slice corresponding to a given quartile")
-  public static Dataset quartile(
+  public Dataset quartile(
       @Doc("the dataset to slice") Dataset dataset, 
       @Doc("a quartile number (1-4)") int quartileNumber) {
     return partition(dataset, quartileNumber, QUARTILE_PORTION_COUNT);
@@ -109,7 +119,7 @@ public class Slices {
    * @return a new {@link Dataset}, corresponding to the desired quartile.
    */
   @Doc("Returns the slice corresponding to a given quartile")
-  public static Dataset quintile(
+  public Dataset quintile(
       @Doc("the dataset to slice") Dataset dataset, 
       @Doc("the quintile number (1-5)") int quintileNumber) {
     return partition(dataset, quintileNumber, QUINTILE_PORTION_COUNT);
@@ -122,7 +132,7 @@ public class Slices {
    * @return a new {@link Dataset}, corresponding to the desired partition.
    */
   @Doc("Returns a proportion of the given dataset (given a number of parts into which the dataset should be subdivided)")
-  public static Dataset partition(
+  public Dataset partition(
       @Doc("the dataset to slice") Dataset dataset,
       @Doc("the partition number (1 to <partition count>) - see next param") int partitionNumber,
       @Doc("the partition count: the number of portions to divide the dataset into") int partitionCount) {
@@ -139,6 +149,13 @@ public class Slices {
     return slice(dataset, start, end);
   }
 
+  /**
+   * Note: this method is static in order to act as a stateless utility.
+   *
+   * @param dataset the {@link Dataset} to create partitions from.
+   * @param partitionCount a number of partititions to create out of the given dataset.
+   * @return a {@link List} of {@link Dataset}s resulting from the partitioning of the dataset given as input.
+   */
   @Doc("Returns a collection of datasets, with each dataset corresponding to a partition of the dataset given as input")
   public static List<Dataset> partitions(
           @Doc("the dataset to slice") Dataset dataset,

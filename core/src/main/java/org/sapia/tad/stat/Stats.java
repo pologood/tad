@@ -1,13 +1,13 @@
 package org.sapia.tad.stat;
 
 import org.sapia.tad.Dataset;
+import org.sapia.tad.TadContext;
 import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
 import org.sapia.tad.computation.ComputationResult;
 import org.sapia.tad.computation.ComputationResults;
 import org.sapia.tad.computation.ComputationTask;
 import org.sapia.tad.computation.Computations;
-import org.sapia.tad.concurrent.Threading;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DatasetRowSetAdapter;
 import org.sapia.tad.impl.DefaultDataset;
@@ -49,8 +49,11 @@ public class Stats {
    * Constant to which the max {@link ComputationResult} is bound.
    */
   public static final String MAX      = "max";
-  
-  private Stats() {
+
+  private TadContext context;
+
+  public Stats(TadContext context) {
+    this.context = context;
   }
 
   /**
@@ -62,7 +65,7 @@ public class Stats {
    * @see MinMaxComputation
    */
   @Doc("Internally registers summary stats computations with the given task")
-  public static void summary(ComputationTask task) {
+  public void summary(ComputationTask task) {
     task.add(new SpreadStatsComputation());
     task.add(new MedianComputation());
     task.add(new MinMaxComputation());
@@ -77,7 +80,7 @@ public class Stats {
    * for the end of the summary computation.
    */
   @Doc("Computes summary statistics for the given dataset - and for the specified columns")
-  public static ComputationResults summary(@Doc("a dataset") Dataset dataset, @Doc("the column names") List<String> columnNames) 
+  public ComputationResults summary(@Doc("a dataset") Dataset dataset, @Doc("the column names") List<String> columnNames)
       throws IllegalArgumentException, InterruptedException {
     return summary(dataset, columnNames.toArray(new String[columnNames.size()]));
   }
@@ -91,9 +94,9 @@ public class Stats {
    * for the end of the summary computation.
    */
   @Doc("Computes summary statistics for the given dataset - and for the specified columns")
-  public static ComputationResults summary(@Doc("a dataset") Dataset dataset, @Doc("the column names") String...columnNames) 
+  public ComputationResults summary(@Doc("a dataset") Dataset dataset, @Doc("the column names") String...columnNames)
       throws IllegalArgumentException, InterruptedException {
-    ComputationTask task = Computations.parallel(Threading.getThreadPool(), Threading.getTimeout());
+    ComputationTask task = Computations.parallel(context.getThreadPool());
     summary(task);
     return task.compute(dataset.getColumnSet().includes(columnNames), new DatasetRowSetAdapter(dataset));
   }
@@ -106,15 +109,15 @@ public class Stats {
    * for the end of the summary computation.
    */
   @Doc("Computes summary statistics for all columns in the given dataset")
-  public static ComputationResults summary(@Doc("a dataset") Dataset dataset) 
+  public ComputationResults summary(@Doc("a dataset") Dataset dataset)
       throws IllegalArgumentException, InterruptedException {
-    ComputationTask task = Computations.parallel(Threading.getThreadPool(), Threading.getTimeout());
+    ComputationTask task = Computations.parallel(context.getThreadPool());
     summary(task);
     return task.compute(dataset.getColumnSet(), new DatasetRowSetAdapter(dataset));
   }
 
-  @Doc("Performs unity-based normalization of a given dataset")
-  public static Dataset normalize(@Doc("a dataset") Dataset input) {
+  @Doc("Performs range normalization of a given dataset - returns the normalized dataset")
+  public Dataset rangeNormalization(@Doc("a dataset to normalize") Dataset input) {
     if (input.size() == 0) {
       return input;
     }

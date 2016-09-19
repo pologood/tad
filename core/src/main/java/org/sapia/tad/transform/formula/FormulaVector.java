@@ -5,13 +5,14 @@ import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
 import org.sapia.tad.impl.DefaultRowResult;
 import org.sapia.tad.impl.DefaultVector;
+import org.sapia.tad.impl.VectorImpl;
 import org.sapia.tad.util.Checks;
 import org.sapia.tad.value.Value;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-class FormulaVector implements Vector {
+class FormulaVector extends VectorImpl {
   
   private ColumnSet     columns;
   private Vector        delegate;
@@ -40,64 +41,8 @@ class FormulaVector implements Vector {
   }
 
   @Override
-  public Iterator<Value> iterator() {
-    return new Iterator<Value>() {
-      
-      private int index;
-      @Override
-      public boolean hasNext() {
-        return index < delegate.size() + formulas.length;
-      }
-      
-      @Override
-      public Value next() {
-        if (index >= delegate.size() + formulas.length) {
-          throw new NoSuchElementException();
-        }
-        return get(index++);
-      }
-      
-      @Override
-      public void remove() {
-      }
-    };
-  }
-  
-  @Override
   public int size() {
     return delegate.size() + formulas.length;
   }
   
-  @Override
-  public Vector subset(int... indices) throws IllegalArgumentException {
-    Value[] toReturn = new Value[indices.length];
-    for (int i = 0; i < indices.length; i++) {
-      toReturn[i] = get(indices[i]);
-    }
-    return new DefaultVector(toReturn);
-  }
-
-  @Override
-  public double product(Vector other) {
-    return Vectors.product(this, other);
-  }
-
-  @Override
-  public Vector sum(Vector other) {
-    return Vectors.sum(this, other);
-  }
-
-  @Override
-  public double norm() {
-    return Vectors.norm(this);
-  }
-
-  @Override
-  public Value[] toArray() {
-    Value[] values = new Value[size()];
-    for (int i = 0; i < values.length; i++) {
-      values[i] = get(i);
-    }
-    return values;
-  }
 }

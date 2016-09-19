@@ -1,7 +1,6 @@
 package org.sapia.tad.ml.error;
 
 import org.sapia.tad.Vector;
-import org.sapia.tad.Vectors;
 import org.sapia.tad.util.Checks;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
@@ -19,6 +18,9 @@ public class RmsCumulativeError implements CumulativeError {
   @Override
   public CumulativeError accumulate(Vector idealOutput, Vector actualOutput) {
     Checks.isTrue(idealOutput.size() == actualOutput.size(), "Vectors do not have same length. Got %s vs %s", idealOutput.size(), actualOutput.size());
+    if (total == null) {
+      total = new double[idealOutput.size()];
+    }
     observations++;
     for (int i = 0; i < idealOutput.size(); i++) {
       Value ideal  = idealOutput.get(i);
@@ -32,10 +34,11 @@ public class RmsCumulativeError implements CumulativeError {
   @Override
   public double get() {
     if (observations > 0) {
+      double error = 0;
       for (int i = 0; i < total.length; i++) {
-        total[i] += Math.sqrt(1 / observations * total[i]);
+        error += total[i];
       }
-      return Vectors.withNumbers(total).norm();
+      return Math.sqrt(1d / observations * error);
     }
     return 0;
   }

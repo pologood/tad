@@ -1,8 +1,6 @@
 package org.sapia.tad.transform.range;
 
-import org.sapia.tad.Column;
-import org.sapia.tad.Dataset;
-import org.sapia.tad.Datatype;
+import org.sapia.tad.*;
 import org.sapia.tad.Vector;
 import org.sapia.tad.func.ArgFunction;
 import org.sapia.tad.help.Doc;
@@ -24,7 +22,10 @@ import java.util.*;
 @Doc("Performs replacement of continuous values with corresponding ranges")
 public class Ranges {
 
-  private Ranges() {
+  private TadContext context;
+
+  public Ranges(TadContext context) {
+    this.context = context;
   }
   
   /**
@@ -34,7 +35,7 @@ public class Ranges {
    * @return a new {@link Dataset}, with the desired column values converted to ranges.
    */
   @Doc("Replaces continuous values with corresponding ranges, returns the thus processed dataset")
-  public static Dataset range(
+  public Dataset range(
       @Doc("dataset to process") Dataset dataset, 
       @Doc("size of each range partitions") int partitionSize, 
       @Doc("names of the columns whose values should be replaced by ranges") String...columnNames) {

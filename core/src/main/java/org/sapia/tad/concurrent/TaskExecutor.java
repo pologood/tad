@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -19,6 +20,12 @@ public class TaskExecutor {
   private final List<Future<?>> executingTasks = new ArrayList<>();
 
   public TaskExecutor addTask(Runnable task) {
+    Future<?> result = executor.submit(task);
+    executingTasks.add(result);
+    return this;
+  }
+
+  public <T> TaskExecutor addTask(Callable<T> task) {
     Future<?> result = executor.submit(task);
     executingTasks.add(result);
     return this;

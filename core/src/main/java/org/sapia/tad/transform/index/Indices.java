@@ -3,7 +3,6 @@ package org.sapia.tad.transform.index;
 import org.sapia.tad.*;
 import org.sapia.tad.computation.*;
 import org.sapia.tad.concurrent.ThreadInterruptedException;
-import org.sapia.tad.concurrent.Threading;
 import org.sapia.tad.conf.Conf;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DefaultDataset;
@@ -26,7 +25,10 @@ import java.util.List;
  */
 public class Indices {
 
-  private Indices() {
+  private TadContext context;
+
+  public Indices(TadContext context) {
+    this.context = context;
   }
 
   /**
@@ -40,9 +42,9 @@ public class Indices {
    * this operation.
    */
   @Doc("Performs the given computation over each group of rows in the provided indexed dataset")
-  public static IndexedDataset aggregate(IndexedDataset dataset, Computation computation) throws ThreadInterruptedException {
+  public IndexedDataset aggregate(IndexedDataset dataset, Computation computation) throws ThreadInterruptedException {
     
-    ComputationTask task = Computations.parallel(Threading.getThreadPool(), Conf.getTaskTimeout());
+    ComputationTask task = Computations.parallel(context.getThreadPool());
     task.add(computation);
     List<Vector> aggregatedRows = new ArrayList<>();
     for (VectorKey k : dataset.getKeys()) {
@@ -74,7 +76,7 @@ public class Indices {
    * @see #aggregate(IndexedDataset, Computation)
    */
   @Doc("Computes the sum for each group of rows in the provided indexed dataset")
-  public static IndexedDataset sum(IndexedDataset dataset) throws ThreadInterruptedException {
+  public IndexedDataset sum(IndexedDataset dataset) throws ThreadInterruptedException {
     return aggregate(dataset, new SumComputation());
   }
   
@@ -89,7 +91,7 @@ public class Indices {
    * @see #aggregate(IndexedDataset, Computation)
    */
   @Doc("Computes the average for each group of rows in the provided indexed dataset")
-  public static IndexedDataset avg(IndexedDataset dataset) throws ThreadInterruptedException {
+  public IndexedDataset avg(IndexedDataset dataset) throws ThreadInterruptedException {
     return aggregate(dataset, new MeanComputation());
   }
   
@@ -104,7 +106,7 @@ public class Indices {
    * @see #aggregate(IndexedDataset, Computation)
    */
   @Doc("Computes the min for each group of rows in the provided indexed dataset")
-  public static IndexedDataset min(IndexedDataset dataset) throws ThreadInterruptedException {
+  public IndexedDataset min(IndexedDataset dataset) throws ThreadInterruptedException {
     return aggregate(dataset, new MinComputation());
   }
   
@@ -119,7 +121,7 @@ public class Indices {
    * @see #aggregate(IndexedDataset, Computation)
    */
   @Doc("Computes the max for each group of rows in the provided indexed dataset")
-  public static IndexedDataset max(IndexedDataset dataset) throws ThreadInterruptedException {
+  public IndexedDataset max(IndexedDataset dataset) throws ThreadInterruptedException {
     return aggregate(dataset, new MaxComputation());
   }
 }

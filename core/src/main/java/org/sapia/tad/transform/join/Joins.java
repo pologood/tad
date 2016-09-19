@@ -17,8 +17,11 @@ import java.util.List;
  *
  */
 public class Joins {
+
+  private TadContext context;
   
-  private Joins() {
+  public Joins(TadContext context) {
+    this.context = context;
   }
 
   /**
@@ -28,7 +31,7 @@ public class Joins {
    * map to which ones in the right dataset.
    * @return a new {@link DataSet}.
    */
-  public static Dataset join(Dataset left, Dataset right, Join join) {
+  public Dataset join(Dataset left, Dataset right, Join join) {
     return join(left, right.index(join.getRight().getColumnNames()), join);
   }
   /**
@@ -38,7 +41,7 @@ public class Joins {
    * map to which ones in the right dataset.
    * @return a new {@link DataSet}.
    */  
-  public static Dataset join(Dataset left, IndexedDataset right, Join join) {
+  public Dataset join(Dataset left, IndexedDataset right, Join join) {
     
     List<Column> joinCols = new ArrayList<>(left.getColumnSet().size() + right.getColumnSet().size());
 

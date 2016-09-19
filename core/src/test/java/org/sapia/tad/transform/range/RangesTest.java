@@ -14,9 +14,12 @@ import static org.junit.Assert.assertEquals;
 public class RangesTest {
   
   private Dataset dataset;
+
+  private Tad tad;
   
   @Before
   public void setUp() {
+    tad = TestTad.get();
     ColumnSet columns = ColumnSets.columnSet(
         "col0", Datatype.STRING, 
         "col1", Datatype.NUMERIC, 
@@ -37,7 +40,7 @@ public class RangesTest {
   @SuppressWarnings("unchecked")
   @Test
   public void testRange() {
-    Dataset result = Ranges.range(dataset, 2, "col1", "col3");
+    Dataset result = tad.xf.ranges.range(dataset, 2, "col1", "col3");
     for (int i = 0; i < result.size(); i += 2) {
       double v1 = new MeanValue().increase(i + 1).increase(i + 2).get();
       double v2 = v1 * 10d; 

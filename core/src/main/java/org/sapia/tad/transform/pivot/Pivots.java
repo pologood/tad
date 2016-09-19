@@ -37,8 +37,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  */
 public class Pivots {
-  
-  private Pivots() {
+
+  private TadContext context;
+
+  public Pivots(TadContext context) {
+    this.context = context;
   }
 
   /**
@@ -46,7 +49,7 @@ public class Pivots {
    * @return the {@link IndexedDataset} resulting from the merge operation.
    */
   @Doc("Merges one or more pivot datasets")
-  public static IndexedDataset merge(@Doc("pivot datasets to merge") List<PivotDataset> datasets) {
+  public IndexedDataset merge(@Doc("pivot datasets to merge") List<PivotDataset> datasets) {
     Checks.isFalse(datasets.size() == 0, "No datasets specified: one must at least be provided");
     if (datasets.size() == 1) {
       return datasets.get(0);
@@ -66,7 +69,7 @@ public class Pivots {
    * @return the {@link IndexedDataset} resulting from the merge operation.
    */
   @Doc("Merges one or more pivot datasets")
-  public static IndexedDataset merge(@Doc("pivot datasets to aggregate") PivotDataset...datasets) {
+  public IndexedDataset merge(@Doc("pivot datasets to aggregate") PivotDataset...datasets) {
     return merge(Data.list(datasets));
   }
 
@@ -76,7 +79,7 @@ public class Pivots {
    * @param dimensionColumnNames the names of the columns acting as so-called "dimensions".
    * @return the {@link IndexedDataset} resulting from the "pivoting" of the given dataset.
    */
-  public static IndexedDataset pivot(
+  public IndexedDataset pivot(
       @Doc("dataset for which to create a pivot") Dataset dataset, 
       @Doc("summary column name") String summaryColumnName,
       @Doc("dimension (or fact) column names") List<String> dimensionColumnNames) {
@@ -89,7 +92,7 @@ public class Pivots {
    * @param dimensionColumnNames the names of the columns acting as so-called "dimensions", or fact columns.
    * @return the {@link IndexedDataset} resulting from the "pivoting" of the given dataset.
    */
-  public static IndexedDataset pivot(
+  public IndexedDataset pivot(
       @Doc("dataset for which to create a pivot") Dataset dataset, 
       @Doc("summary column name") String summaryColumnName,
       @Doc("dimensions/fact column names") String...dimensionColumnNames) {

@@ -1,10 +1,13 @@
 package org.sapia.tad.util;
 
+import org.sapia.tad.*;
 import org.sapia.tad.algo.Criteria;
 import org.sapia.tad.func.ArgFunction;
 import org.sapia.tad.help.Doc;
+import org.sapia.tad.value.Value;
 
 import java.util.*;
+import java.util.Vector;
 import java.util.function.Supplier;
 
 /**
@@ -371,4 +374,28 @@ public class Data {
     return map;
   }
 
+  /**
+   * @param values a {@link List} to iterate over.
+   * @param func an {@link IterationFunction}, acting as a call-back for each value being iterated on.
+   */
+  public static <T> void foreach(Iterable<T> values, IterationFunction<T> func) {
+    int index = 0;
+    for (T value : values) {
+      func.apply(index, value);
+      index++;
+    }
+  }
+
+  // --------------------------------------------------------------------------
+  // Inner classes/interfaces
+
+  public interface IterationFunction<T> {
+
+    /**
+     * @param index the index of the given value, in the collection containing it.
+     * @param v the value corresponding to the given index.
+     */
+    public void apply(int index, T v);
+
+  }
 }

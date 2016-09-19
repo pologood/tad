@@ -1,9 +1,6 @@
 package org.sapia.tad.transform.view;
 
-import org.sapia.tad.Column;
-import org.sapia.tad.ColumnSet;
-import org.sapia.tad.ColumnSets;
-import org.sapia.tad.Dataset;
+import org.sapia.tad.*;
 import org.sapia.tad.help.Doc;
 import org.sapia.tad.impl.DefaultColumnSet;
 import org.sapia.tad.util.Checks;
@@ -21,7 +18,10 @@ import java.util.Map;
 @Doc("Allows creating views over given datasets, by including/excluding columns")
 public class Views {
 
-  private Views() {
+  private TadContext context;
+
+  public Views(TadContext context) {
+    this.context = context;
   }
   
   /**
@@ -30,7 +30,7 @@ public class Views {
    * @return a new {@link Dataset}, with only the non-excluded columns.
    */
   @Doc("Creates a view over a given dataset, excluding the speficied columns")
-  public static Dataset exclude(
+  public Dataset exclude(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the names of the columns to exclude") List<String> excludedColumnNames) {
     ColumnSet viewColumns = dataset.getColumnSet().includes(excludedColumnNames);
@@ -43,7 +43,7 @@ public class Views {
    * @return a new {@link Dataset}, with only the non-excluded columns.
    */
   @Doc("Creates a view over a given dataset, excluding the speficied columns")
-  public static Dataset exclude(
+  public Dataset exclude(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the names of the columns to exclude") String...excludedColumnNames) {
     ColumnSet viewColumns = dataset.getColumnSet().includes(excludedColumnNames);
@@ -56,7 +56,7 @@ public class Views {
    * @return a new {@link Dataset}, with only the columns specified.
    */
   @Doc("Creates a view over a given dataset, including only the speficied columns")
-  public static Dataset include(
+  public Dataset include(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the names of the columns to include") List<String> includedColumnNames) {
     ColumnSet viewColumns = dataset.getColumnSet().includes(includedColumnNames);
@@ -69,7 +69,7 @@ public class Views {
    * @return a new {@link Dataset}, with only the columns specified.
    */
   @Doc("Creates a view over a given dataset, including only the speficied columns")
-  public static Dataset include(
+  public Dataset include(
       @Doc("a dataset") Dataset dataset, 
       @Doc("the names of the columns to include")  String...includedColumnNames) {
     ColumnSet viewColumns = dataset.getColumnSet().includes(includedColumnNames);
@@ -84,7 +84,7 @@ public class Views {
    * @return a new {@link Dataset}, with the new column names.
    */
   @Doc("Renames the given dataset's columns, assigning to these the given column names")
-  public static Dataset rename(
+  public Dataset rename(
       @Doc("a dataset") Dataset dataset, 
       @Doc("new column names, for all the columns in the dataset (given in column order)") String...newColumnNames) {
     Checks.isTrue(dataset.getColumnSet().size() == newColumnNames.length, 
@@ -107,7 +107,7 @@ public class Views {
    * @return a new {@link Dataset}, with the new column names.
    */
   @Doc("Renames the given dataset's selected columns, with the new names given")
-  public static Dataset rename(
+  public Dataset rename(
       @Doc("a dataset") Dataset dataset, 
       @Doc("a map holding the current names to replace as keys, and the new names as corresponding values")
       Map<String, String> oldNamesVsNewNames) {
@@ -135,7 +135,7 @@ public class Views {
    */
   @Doc("Assigns automatically abbreviated names to the columns in the dataset, using the existing column names, " + 
    " according to a built-in best-effort algorithm")
-  public static Dataset rename(
+  public Dataset rename(
       @Doc("a dataset") Dataset dataset) {
     ColumnSet renamedColumns = ColumnSets.rename(dataset.getColumnSet());
     return new ViewDataset(dataset, renamedColumns, renamedColumns.getColumnIndices());

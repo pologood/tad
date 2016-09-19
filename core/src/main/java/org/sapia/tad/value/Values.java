@@ -43,4 +43,18 @@ public class Values {
     }
     return values;
   }
+
+  /**
+   * @param singleObject a single {@link Object} to return a {@link Value} for.
+   * @return a new {@link Value}, corresponding to the given object.
+   */
+  public static Value of(Object singleObject) {
+    if (singleObject instanceof Value) {
+      return (Value) singleObject;
+    } else if (singleObject == null) {
+      return NullValue.getInstance();
+    } else {
+      return DataTypeStrategies.getDataTypeStrategyFor(singleObject).getValueFor(singleObject);
+    }
+  }
 }

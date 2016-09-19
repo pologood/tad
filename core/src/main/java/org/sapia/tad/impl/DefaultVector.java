@@ -2,6 +2,7 @@ package org.sapia.tad.impl;
 
 import org.sapia.tad.Vector;
 import org.sapia.tad.Vectors;
+import org.sapia.tad.util.Checks;
 import org.sapia.tad.util.Objects;
 import org.sapia.tad.value.NullValue;
 import org.sapia.tad.value.Value;
@@ -16,12 +17,12 @@ import java.util.List;
  * @author yduchesne
  *
  */
-public class DefaultVector implements Vector {
+public class DefaultVector extends VectorImpl {
   
-  private Value[] values;
+  protected Value[] values;
   
   /**
-   * @param values the values to wrap.
+   * @param values the {@link Value}s to wrap.
    */
   public DefaultVector(Value...values) {
     this.values = values;
@@ -33,21 +34,22 @@ public class DefaultVector implements Vector {
   }
 
   /**
-   * @param values an values of arbitrary objects for which to create an instance of this class.
+   * @param values an array of arbitrary objects for which to create an instance of this class.
    */
   public DefaultVector(Object...values) {
     this(Values.with(values));
   }
 
+  /**
+   * @param values a {@link List} of arbitrary objects for which to create an instance of this class.
+   */
   public DefaultVector(List<Value> values) {
     this(values.toArray(new Value[values.size()]));
   }
   
   @Override
   public Value get(int index) throws IllegalArgumentException {
-    if (index < 0 || index >= values.length) {
-      throw new IllegalArgumentException(String.format("Invalid index: %s. Got %s values", index, values.length));
-    }
+    Checks.bounds(index, values, "Invalid index: %s. Got %s value(s)", index, values.length);
     return values[index];
   }
   
@@ -60,21 +62,6 @@ public class DefaultVector implements Vector {
       values[i] = value;
     }
     return new DefaultVector(values);
-  }
-
-  @Override
-  public double product(Vector other) {
-    return Vectors.product(this, other);
-  }
-
-  @Override
-  public Vector sum(Vector other) {
-    return Vectors.sum(this, other);
-  }
-
-  @Override
-  public double norm() {
-    return Vectors.norm(this);
   }
 
   @Override
@@ -108,38 +95,5 @@ public class DefaultVector implements Vector {
     System.arraycopy(values, 0, toReturn, 0, values.length);
     return toReturn;
   }
-  
-  @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof Vector) {
-      Vector other = (Vector) obj;
-      if (values.length != other.size()) {
-        return false;
-      }
-      for (int i = 0; i < values.length; i++) {
-        if (!Objects.safeEquals(values[i], other.get(i))) {
-          return false;
-        }
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  @Override
-  public int hashCode() {
-    return Objects.safeHashCode(values);
-  }
-  
-  @Override
-  public String toString() {
-    StringBuilder s = new StringBuilder("[");
-    for (int i = 0; i < values.length; i++) {
-      if (i > 0) {
-        s.append(",");
-      }
-      s.append(values[i]);
-    }
-    return s.append("]").toString();
-  }
+
 }

@@ -43,7 +43,7 @@ public class ComputationResult {
   }
   
   /**
-   * @param colName a {@link Column}.
+   * @param col a {@link Column}.
    * @return the value associated to the given column.
    */
   public Value get(Column col) {
@@ -51,8 +51,8 @@ public class ComputationResult {
   }
   
   /**
-   * @param colName a {@link Column}.
-   * @param defaultValue a default value which will be returned if no value is found for
+   * @param col a {@link Column}.
+   * @param defaultVal a default value which will be returned if no value is found for
    * the given column.
    * @return the value associated to the given column.
    */
@@ -82,7 +82,7 @@ public class ComputationResult {
   }
   
   /**
-   * @param colName a {@link Column}.
+   * @param col a {@link Column}.
    * @return the value associated to the given column.
    */
   public Value getNotNull(Column col) {

@@ -4,6 +4,8 @@ import org.sapia.tad.help.Doc;
 import org.sapia.tad.value.NumericValue;
 import org.sapia.tad.value.Value;
 
+import java.util.Random;
+
 /**
  * Provides number-related utility methods.
  * 
@@ -11,7 +13,7 @@ import org.sapia.tad.value.Value;
  */
 public class Numbers {
   
-  private Numbers() {
+  public Numbers() {
   }
   
   /**
@@ -38,7 +40,7 @@ public class Numbers {
     double[] range = new double[(int) (to - from)];
     double val = from;
     for (int i = 0; i < range.length; i++) {
-      range[i] = val;
+      range[i] = val++;
     }
     return range;
   }
@@ -113,6 +115,35 @@ public class Numbers {
       values[i] = new NumericValue(value);
     }
     return values;
+  }
+
+  /**
+   * @param min the minimum value to generate.
+   * @param max the maximum value to generate.
+   * @param repetitions the number of times to repeat random number generation.
+   * @return an new array of integers, whose length corresponds to the given number of repetitions.
+   */
+  public static int[] repeatRandom(int min, int max, int repetitions){
+    Random rand = new Random();
+    int[] values = new int[repetitions];
+    for (int i = 0; i < values.length; i++) {
+      values[i] = rand.nextInt(max - min) + min;
+    }
+    return values;
+  }
+
+  /**
+   * @param mid the mid-range value around which to generate random values.
+   * @param maxSpread the maximum spread for which to generate random values, around the given mid value.
+   * @return a random value, within the given spread of the so-called "mid" value.
+   */
+  public static int randomSpread(int mid, int maxSpread) {
+    Random rand = new Random();
+    int spread = rand.nextInt(maxSpread);
+    if ((rand.nextInt(10) + 1)%2 == 0) {
+      spread = -spread;
+    }
+    return mid + spread;
   }
  
 } 

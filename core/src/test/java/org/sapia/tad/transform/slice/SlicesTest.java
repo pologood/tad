@@ -16,9 +16,13 @@ import static org.junit.Assert.assertEquals;
 public class SlicesTest {
   
   private Dataset dataset;
+
+  private Tad tad;
   
   @Before
   public void setUp() {
+    tad = TestTad.get();
+
     ColumnSet columns = ColumnSets.columnSet("col0", Datatype.NUMERIC, "col1", Datatype.STRING, "col2", Datatype.STRING);
     List<Vector> rows = new ArrayList<>(50);
     for (int i : Numbers.range(50)) {
@@ -29,7 +33,7 @@ public class SlicesTest {
 
   @Test
   public void testTop() {
-    Dataset top = Slices.top(dataset, 0.1);
+    Dataset top = tad.xf.slices.top(dataset, 0.1);
     assertEquals(5, top.size());
     for (int i : Numbers.range(0, 5)) {
       assertEquals(NumericValue.of(i), top.getRow(i).get(0));
@@ -38,7 +42,7 @@ public class SlicesTest {
 
   @Test
   public void testBottom() {
-    Dataset bottom = Slices.bottom(dataset, 0.1);
+    Dataset bottom = tad.xf.slices.bottom(dataset, 0.1);
     assertEquals(5, bottom.size());
     for (int i : Numbers.range(45, 49)) {
       assertEquals(NumericValue.of(i), bottom.getRow(i - 45).get(0));
@@ -71,16 +75,16 @@ public class SlicesTest {
 
   @Test
   public void testQuartile() {
-    Dataset q1 = Slices.quartile(dataset, 1);
+    Dataset q1 = tad.xf.slices.quartile(dataset, 1);
     assertEquals(NumericValue.of(0), q1.getRow(0).get(0));
 
-    Dataset q2 = Slices.quartile(dataset, 2);
+    Dataset q2 = tad.xf.slices.quartile(dataset, 2);
     assertEquals(NumericValue.of(12), q2.getRow(0).get(0));
     
-    Dataset q3 = Slices.quartile(dataset, 3);
+    Dataset q3 = tad.xf.slices.quartile(dataset, 3);
     assertEquals(NumericValue.of(24), q3.getRow(0).get(0));
     
-    Dataset q4 = Slices.quartile(dataset, 4);
+    Dataset q4 = tad.xf.slices.quartile(dataset, 4);
     assertEquals(NumericValue.of(36), q4.getRow(0).get(0));
     assertEquals(NumericValue.of(49), Datasets.lastRow(q4).get(0));
   }
@@ -88,7 +92,7 @@ public class SlicesTest {
   @Test
   public void testQuintile() {
     for (int n : Numbers.range(1, 6)) {
-      Dataset quintile = Slices.quintile(dataset, n);
+      Dataset quintile = tad.xf.slices.quintile(dataset, n);
       assertEquals(NumericValue.of((n - 1) * 10), quintile.getRow(0).get(0));
     }
   }
